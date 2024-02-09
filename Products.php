@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                   <div class="bgc-white bd bdrs-3 p-20 mB-20">
                     <h4 class="c-grey-900 mB-10 d-inline">Products</h4>
-                    <button class="btn btn-grayy float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Product</button>
+                    <button class="btn btn-grayy float-end" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add New Product</button>
                     <table id="dataTable" class="table table-hover" cellspacing="0" width="100%">
                         <thead>
                           <tr>
@@ -41,7 +41,7 @@
                             <td>Edinburgh</td>
                             <td>61</td>
                             <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <td>Garrett Winters</td>
@@ -506,7 +506,7 @@
 
 
   <!-- Modal -->
-  <div class="modal fade hide" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal fade hide" id="AddProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -514,7 +514,11 @@
           <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <div class="mb-3">
+            <label class="form-label" for="inputAddress">Search Product</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Search Product">
+          </div>
+          <form class="d-none">
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label class="form-label" for="inputEmail4">Email</label>
@@ -524,10 +528,6 @@
                 <label class="form-label" for="inputPassword4">Password</label>
                 <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
               </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="inputAddress">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
             </div>
             <div class="mb-3">
               <label class="form-label" for="inputAddress2">Address 2</label>

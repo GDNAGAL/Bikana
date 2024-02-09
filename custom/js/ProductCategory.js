@@ -5,8 +5,12 @@ window.addEventListener('load', function load() {
     HideLoader();
 });
 
-
-
+categoryIcon.onchange = evt => {
+    const [file] = categoryIcon.files
+    if (file) {
+        CategoryIconPreview.src = URL.createObjectURL(file)
+    }
+  }
 
 $("#loginForm").on("submit",function(e){
     $("#message").html('')

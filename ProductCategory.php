@@ -83,69 +83,25 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add Product Category</h5>
           <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label" for="inputAddress">Search Product</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Search Product">
-          </div>
-          <form class="d-none">
-            <div class="row">
-              <div class="mb-3 col-md-6">
-                <label class="form-label" for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-              </div>
-              <div class="mb-3 col-md-6">
-                <label class="form-label" for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-              </div>
+          <form class="">
+            <div class="mb-3">
+              <label class="form-label" for="categorytitle">Category Title :</label>
+              <input type="text" class="form-control" id="categorytitle" placeholder="Enter Product Category Title" name="CategoryName">
             </div>
             <div class="mb-3">
-              <label class="form-label" for="inputAddress2">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="row">
-              <div class="mb-3 col-md-6">
-                <label class="form-label" for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity">
-              </div>
-              <div class="mb-3 col-md-4">
-                <label class="form-label" for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                  <option selected="selected">Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="mb-3 col-md-2">
-                <label class="form-label" for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
-              </div>
-            </div>
-            <div class="row">
-              <div class="mb-3 col-md-6">
-                <label class="form-label fw-500">Birthdate</label>
-                <div class="timepicker-input input-icon mb-3">
-                  <div class="input-group">
-                    <div class="input-group-text bgc-white bd bdwR-0">
-                      <i class="ti-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control bdc-grey-200 start-date" placeholder="Datepicker" data-provide="datepicker">
-                  </div>
-                </div>
-              </div>
+              <label class="form-label" for="CategoryDescription">Category Description :</label>
+              <textarea type="text" class="form-control" id="CategoryDescription" rows="4" placeholder="Enter Description" name="CategoryDesc"></textarea>
             </div>
             <div class="mb-3">
-              <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                <input type="checkbox" id="inputCall2" name="inputCheckboxesCall" class="peer">
-                <label for="inputCall2" class="form-label peers peer-greed js-sb ai-c">
-                  <span class="peer peer-greed">Call John for Dinner</span>
-                </label>
-              </div>
+              <label class="form-label" for="categoryIcon">Category Small Image :</label>
+              <input type="file" class="form-control" id="categoryIcon" placeholder="Enter Product Category Title" name="CategoryName">
             </div>
-            <button type="submit" class="btn btn-primary btn-color">Sign in</button>
           </form>
+          <img id="CategoryIconPreview" width="100px" height="100px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUUZHBKzPyHHgcB_-1Rb5-oCUKWxC-vNFVw&usqp=CAU" alt="your image" />
         </div>
         <div class="modal-header">
           <button type="button" class="btn btn-grayy">Save Changes</button>
@@ -158,5 +114,5 @@
 
     <script defer="defer" src="dist/js/jquery-3.7.1.js"></script>
     <script defer="defer" src="custom/js/functions.js"></script>
-    <script defer="defer" src="custom/js/Products.js"></script>
+    <script defer="defer" src="custom/js/ProductCategory.js"></script>
 </html>

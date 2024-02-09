@@ -2,6 +2,10 @@ body{
     margin:0;
 }
 
+#CategoryIconPreview{
+  border: 2px solid #7e7e7e;
+  padding: 2px;
+}
 
 #loader {
     transition: all 0.3s ease-in-out;
