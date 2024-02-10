@@ -42,28 +42,28 @@ function activateMenu() {
 
         if (matchingMenuItem) {
             matchingMenuItem.classList.add('actived');
-            var immediateParent = getClosest(matchingMenuItem, 'li');
-            if (immediateParent) {
-                immediateParent.classList.add('actived');
-            }
+            // var immediateParent = getClosest(matchingMenuItem, 'li');
+            // if (immediateParent) {
+            //     immediateParent.classList.add('actived');
+            // }
 
-            var parent = getClosest(matchingMenuItem, '.parent-menu-item');
-            if (parent) {
-                parent.classList.add('actived');
-                var parentMenuitem = parent.querySelector('.menu-item');
-                if (parentMenuitem) {
-                    parentMenuitem.classList.add('actived');
-                }
-                var parentOfParent = getClosest(parent, '.parent-parent-menu-item');
-                if (parentOfParent) {
-                    parentOfParent.classList.add('actived');
-                }
-            } else {
-                var parentOfParent = getClosest(matchingMenuItem, '.parent-parent-menu-item');
-                if (parentOfParent) {
-                    parentOfParent.classList.add('actived');
-                }
-            }
+            // var parent = getClosest(matchingMenuItem, '.parent-menu-item');
+            // if (parent) {
+            //     parent.classList.add('actived');
+            //     var parentMenuitem = parent.querySelector('.menu-item');
+            //     if (parentMenuitem) {
+            //         parentMenuitem.classList.add('actived');
+            //     }
+            //     var parentOfParent = getClosest(parent, '.parent-parent-menu-item');
+            //     if (parentOfParent) {
+            //         parentOfParent.classList.add('actived');
+            //     }
+            // } else {
+            //     var parentOfParent = getClosest(matchingMenuItem, '.parent-parent-menu-item');
+            //     if (parentOfParent) {
+            //         parentOfParent.classList.add('actived');
+            //     }
+            // }
         }
     }
 }
