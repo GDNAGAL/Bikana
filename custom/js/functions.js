@@ -67,3 +67,8 @@ function activateMenu() {
         }
     }
 }
+
+function hideModal(id){
+    $(id).hide();
+    $(".modal-backdrop").hide();
+}

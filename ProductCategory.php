@@ -35,10 +35,10 @@
                             <th>Action</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
+                        <tbody id="productCategoryTableBody">
+                          <!-- <tr>
                             <td>PC001</td>
-                            <td> <img src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg" width="50px" height="50px" alt="" srcset=""></td>
+                            <td> <img src="" width="50px" height="50px" alt="" srcset=""></td>
                             <td>Fruits</td>
                             <td>Edinburgh jksdgjk kjsdhgbjkbsd gkjbsjkdgb ijsbjdkgb ijsdbgk ksdgibkjs gijsbdgkj kjsbdg</td>
                             <td>61</td>
@@ -47,7 +47,7 @@
                           </tr>
                           <tr>
                             <td>PC001</td>
-                            <td> <img src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg" width="50px" height="50px" alt="" srcset=""></td>
+                            <td> <img src="https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2017/10/31/Photos/Processed/fruits-kFLF--621x414@LiveMint.jpg" width="50px" height="50px" alt="" srcset=""></td>
                             <td>Fruits</td>
                             <td>Edinburgh jksdgjk kjsdhgbjkbsd gkjbsjkdgb ijsbjdkgb ijsdbgk ksdgibkjs gijsbdgkj kjsbdg</td>
                             <td>61</td>
@@ -56,13 +56,13 @@
                           </tr>
                           <tr>
                             <td>PC001</td>
-                            <td> <img src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg" width="50px" height="50px" alt="" srcset=""></td>
+                            <td> <img src="https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2017/10/31/Photos/Processed/fruits-kFLF--621x414@LiveMint.jpg" width="50px" height="50px" alt="" srcset=""></td>
                             <td>Fruits</td>
                             <td>Edinburgh jksdgjk kjsdhgbjkbsd gkjbsjkdgb ijsbjdkgb ijsdbgk ksdgibkjs gijsbdgkj kjsbdg</td>
                             <td>61</td>
                             <td>2011/04/25</td>
                             <td>$320,800</td>
-                          </tr>
+                          </tr> -->
 
                         </tbody>
                       </table>
@@ -86,26 +86,28 @@
           <h5 class="modal-title" id="exampleModalLabel">Add Product Category</h5>
           <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <form class="" id="addProductCategory" autocomplete="off">
         <div class="modal-body">
-          <form class="">
+          <span id="message"></span>
             <div class="mb-3">
               <label class="form-label" for="categorytitle">Category Title :</label>
-              <input type="text" class="form-control" id="categorytitle" placeholder="Enter Product Category Title" name="CategoryName">
+              <input type="text" class="form-control" id="categorytitle" placeholder="Enter Product Category Title" name="CategoryName" required>
             </div>
             <div class="mb-3">
               <label class="form-label" for="CategoryDescription">Category Description :</label>
-              <textarea type="text" class="form-control" id="CategoryDescription" rows="4" placeholder="Enter Description" name="CategoryDesc"></textarea>
+              <textarea type="text" class="form-control" id="CategoryDescription" rows="4" placeholder="Enter Description" name="CategoryDesc" required></textarea>
             </div>
             <div class="mb-3">
               <label class="form-label" for="categoryIcon">Category Small Image :</label>
-              <input type="file" class="form-control" id="categoryIcon" placeholder="Enter Product Category Title" name="CategoryName">
+              <input type="file" class="form-control" id="categoryIcon" name="SmallImage" required>
             </div>
-          </form>
+          
           <img id="CategoryIconPreview" width="100px" height="100px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUUZHBKzPyHHgcB_-1Rb5-oCUKWxC-vNFVw&usqp=CAU" alt="your image" />
         </div>
         <div class="modal-header">
-          <button type="button" class="btn btn-grayy">Save Changes</button>
+          <button type="submit" class="btn btn-grayy">Save Changes</button>
         </div>
+        </form>
       </div>
     </div>
   </div>

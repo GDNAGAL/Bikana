@@ -201,3 +201,4 @@
           </ul>
         </div>
       </div>
+      <input type="hidden" id="ApiURL" value="<?php echo $ApiURL; ?>" />
