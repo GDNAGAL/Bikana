@@ -1,5 +1,5 @@
 <?php
-$AppMode = "TEST";   // TEST PRODUCTION LOCAL
+$AppMode = "LOCAL";   // TEST PRODUCTION LOCAL
 if($AppMode == "LOCAL"){
 
     $AppURL = "http://localhost:3000/Grocery";

@@ -96,7 +96,7 @@ function getProductCategoryList(){
     })
     .catch(error => {
         HideLoader();
-        console.log(error)
+        // console.log(error)
     });
 }
 
