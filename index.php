@@ -1,602 +1,715 @@
+<?php require("inc/User.php");?>
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="dist/css/style.css"></head>
-    <link rel="stylesheet" href="custom/css/style.css">
-    <script defer="defer" src="dist/js/main.js"></script>
-  <body class="app">
-    <?php require("inc/User.php");?>
-    <?php require("inc/sidebar.php");?>
-    <div>
-      <!-- #Main ============================ -->
-      <div class="page-container">
-      <?php require("inc/topbar.php");?>
-        <!-- ### $App Screen Content ### -->
-        <main class="main-content bgc-grey-100">
-          <div id="mainContent">
-            <div class="row gap-20 masonry pos-r">
-              <div class="masonry-sizer col-md-6"></div>
-              <div class="masonry-item w-100">
-                <div class="row gap-20">
-                  <!-- #Toatl Visits ==================== -->
-                  <div class="col-md-3">
-                    <div class="layers bd bgc-white p-20">
-                      <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Total Visits</h6>
-                      </div>
-                      <div class="layer w-100">
-                        <div class="peers ai-sb fxw-nw">
-                          <div class="peer peer-greed">
-                            <span id="sparklinedash"></span>
-                          </div>
-                          <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><?php echo $UserGroupID; ?></span>
-                          </div>
-                        </div>
-                      </div>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- Custom CSS File -->
+  <link href="custom/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<?php require("inc/topbar.php");?>
+<?php require("inc/sidebar.php");?>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-xl-12">
+
+              <div class="card info-card customers-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>1244</h6>
+                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+
                     </div>
                   </div>
 
-                  <!-- #Total Page Views ==================== -->
-                  <div class="col-md-3">
-                    <div class="layers bd bgc-white p-20">
-                      <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Total Page Views</h6>
-                      </div>
-                      <div class="layer w-100">
-                        <div class="peers ai-sb fxw-nw">
-                          <div class="peer peer-greed">
-                            <span id="sparklinedash2"></span>
-                          </div>
-                          <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">-7%</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                </div>
+              </div>
 
-                  <!-- #Unique Visitors ==================== -->
-                  <div class="col-md-3">
-                    <div class="layers bd bgc-white p-20">
-                      <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Unique Visitor</h6>
-                      </div>
-                      <div class="layer w-100">
-                        <div class="peers ai-sb fxw-nw">
-                          <div class="peer peer-greed">
-                            <span id="sparklinedash3"></span>
-                          </div>
-                          <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">~12%</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            </div><!-- End Customers Card -->
 
-                  <!-- #Bounce Rate ==================== -->
-                  <div class="col-md-3">
-                    <div class="layers bd bgc-white p-20">
-                      <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Bounce Rate</h6>
-                      </div>
-                      <div class="layer w-100">
-                        <div class="peers ai-sb fxw-nw">
-                          <div class="peer peer-greed">
-                            <span id="sparklinedash4"></span>
-                          </div>
-                          <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">33%</span>
-                          </div>
-                        </div>
-                      </div>
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Sales <span>| Today</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>145</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="masonry-item col-12">
-                <!-- #Site Visits ==================== -->
-                <div class="bd bgc-white">
-                  <div class="peers fxw-nw@lg+ ai-s">
-                    <div class="peer peer-greed w-70p@lg+ w-100@lg- p-20">
-                      <div class="layers">
-                        <div class="layer w-100 mB-10">
-                          <h6 class="lh-1">Site Visits</h6>
-                        </div>
-                        <div class="layer w-100">
-                          <div id="world-map-marker"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="peer bdL p-20 w-30p@lg+ w-100p@lg-">
-                      <div class="layers">
-                        <div class="layer w-100">
-                          
-                          <div class="layers">
-                            <div class="layer w-100">
-                              <h5 class="mB-5">100k</h5>
-                              <small class="fw-600 c-grey-700">Visitors From USA</small>
-                              <span class="pull-right c-grey-600 fsz-sm">50%</span>
-                              <div class="progress mT-10">
-                                <div class="progress-bar bgc-deep-purple-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%;"> <span class="visually-hidden">50% Complete</span></div>
-                              </div>
-                            </div>
-                            <div class="layer w-100 mT-15">
-                              <h5 class="mB-5">1M</h5>
-                              <small class="fw-600 c-grey-700">Visitors From Europe</small>
-                              <span class="pull-right c-grey-600 fsz-sm">80%</span>
-                              <div class="progress mT-10">
-                                <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%;"> <span class="visually-hidden">80% Complete</span></div>
-                              </div>
-                            </div>
-                            <div class="layer w-100 mT-15">
-                              <h5 class="mB-5">450k</h5>
-                              <small class="fw-600 c-grey-700">Visitors From Australia</small>
-                              <span class="pull-right c-grey-600 fsz-sm">40%</span>
-                              <div class="progress mT-10">
-                                <div class="progress-bar bgc-light-blue-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:40%;"> <span class="visually-hidden">40% Complete</span></div>
-                              </div>
-                            </div>
-                            <div class="layer w-100 mT-15">
-                              <h5 class="mB-5">1B</h5>
-                              <small class="fw-600 c-grey-700">Visitors From India</small>
-                              <span class="pull-right c-grey-600 fsz-sm">90%</span>
-                              <div class="progress mT-10">
-                                <div class="progress-bar bgc-blue-grey-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:90%;"> <span class="visually-hidden">90% Complete</span></div>
-                              </div>
-                            </div>
-                          </div>
 
-                          
-                          <div class="peers pT-20 mT-20 bdT fxw-nw@lg+ jc-sb ta-c gap-10">
-                            <div class="peer">
-                              <div class="easy-pie-chart" data-size="80" data-percent="75" data-bar-color="#f44336">
-                                <span></span>
-                              </div>
-                              <h6 class="fsz-sm">New Users</h6>
-                            </div>
-                            <div class="peer">
-                              <div class="easy-pie-chart" data-size="80" data-percent="50" data-bar-color="#2196f3">
-                                <span></span>
-                              </div>
-                              <h6 class="fsz-sm">New Purchases</h6>
-                            </div>
-                            <div class="peer">
-                              <div class="easy-pie-chart" data-size="80" data-percent="90" data-bar-color="#ff9800">
-                                <span></span>
-                              </div>
-                              <h6 class="fsz-sm">Bounce Rate</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>$3,264</h6>
+                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="masonry-item col-md-6">
-                <!-- #Monthly Stats ==================== -->
-                <div class="bd bgc-white">
-                  <div class="layers">
-                    <div class="layer w-100 pX-20 pT-20">
-                      <h6 class="lh-1">Monthly Stats</h6>
-                    </div>
-                    <div class="layer w-100 p-20">
-                      <canvas id="line-chart" height="220"></canvas>
-                    </div>
-                    <div class="layer bdT p-20 w-100">
-                      <div class="peers ai-c jc-c gapX-20">
-                        <div class="peer">
-                          <span class="fsz-def fw-600 mR-10 c-grey-800">10% <i class="fa fa-level-up c-green-500"></i></span>
-                          <small class="c-grey-500 fw-600">APPL</small>
-                        </div>
-                        <div class="peer fw-600">
-                          <span class="fsz-def fw-600 mR-10 c-grey-800">2% <i class="fa fa-level-down c-red-500"></i></span>
-                          <small class="c-grey-500 fw-600">Average</small>
-                        </div>
-                        <div class="peer fw-600">
-                          <span class="fsz-def fw-600 mR-10 c-grey-800">15% <i class="fa fa-level-up c-green-500"></i></span>
-                          <small class="c-grey-500 fw-600">Sales</small>
-                        </div>
-                        <div class="peer fw-600">
-                          <span class="fsz-def fw-600 mR-10 c-grey-800">8% <i class="fa fa-level-down c-red-500"></i></span>
-                          <small class="c-grey-500 fw-600">Profit</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="masonry-item col-md-6">
-                <!-- #Todo ==================== -->
-                <div class="bd bgc-white p-20">
-                  <div class="layers">
-                    <div class="layer w-100 mB-10">
-                      <h6 class="lh-1">Todo List</h6>
-                    </div>
-                    <div class="layer w-100">
-                      <ul class="list-task list-group" data-role="tasklist">
-                        <li class="list-group-item bdw-0" data-role="task">
-                          <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                            <input type="checkbox" id="inputCall1" name="inputCheckboxesCall" class="peer">
-                            <label for="inputCall1" class="form-label peers peer-greed js-sb ai-c">
-                              <span class="peer peer-greed">Call John for Dinner</span>
-                            </label>
-                          </div>
-                        </li>
-                        <li class="list-group-item bdw-0" data-role="task">
-                          <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                            <input type="checkbox" id="inputCall2" name="inputCheckboxesCall" class="peer">
-                            <label for="inputCall2" class="form-label peers peer-greed js-sb ai-c">
-                              <span class="peer peer-greed">Book Boss Flight</span>
-                              <span class="peer">
-                                <span class="badge rounded-pill fl-r bg-success lh-0 p-10">2 Days</span>
-                              </span>
-                            </label>
-                          </div>
-                        </li>
-                        <li class="list-group-item bdw-0" data-role="task">
-                          <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                            <input type="checkbox" id="inputCall3" name="inputCheckboxesCall" class="peer">
-                            <label for="inputCall3" class="form-label peers peer-greed js-sb ai-c">
-                              <span class="peer peer-greed">Hit the Gym</span>
-                              <span class="peer">
-                                <span class="badge rounded-pill fl-r bg-danger lh-0 p-10">3 Minutes</span>
-                              </span>
-                            </label>
-                          </div>
-                        </li>
-                        <li class="list-group-item bdw-0" data-role="task">
-                          <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                            <input type="checkbox" id="inputCall4" name="inputCheckboxesCall" class="peer">
-                            <label for="inputCall4" class="form-label peers peer-greed js-sb ai-c">
-                              <span class="peer peer-greed">Give Purchase Report</span>
-                              <span class="peer">
-                                <span class="badge rounded-pill fl-r bg-warning lh-0 p-10">not important</span>
-                              </span>
-                            </label>
-                          </div>
-                        </li>
-                        <li class="list-group-item bdw-0" data-role="task">
-                          <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                            <input type="checkbox" id="inputCall5" name="inputCheckboxesCall" class="peer">
-                            <label for="inputCall5" class="form-label peers peer-greed js-sb ai-c">
-                              <span class="peer peer-greed">Watch Game of Thrones Episode</span>
-                              <span class="peer">
-                                <span class="badge rounded-pill fl-r bg-info lh-0 p-10">Tomorrow</span>
-                              </span>
-                            </label>
-                          </div>
-                        </li>
-                        <li class="list-group-item bdw-0" data-role="task">
-                          <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                            <input type="checkbox" id="inputCall6" name="inputCheckboxesCall" class="peer">
-                            <label for="inputCall6" class="form-label peers peer-greed js-sb ai-c">
-                              <span class="peer peer-greed">Give Purchase report</span>
-                              <span class="peer">
-                                <span class="badge rounded-pill fl-r bg-success lh-0 p-10">Done</span>
-                              </span>
-                            </label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="masonry-item col-md-6">
-                <!-- #Sales Report ==================== -->
-                <div class="bd bgc-white">
-                  <div class="layers">
-                    <div class="layer w-100 p-20">
-                      <h6 class="lh-1">Sales Report</h6>
-                    </div>
-                    <div class="layer w-100">
-                      <div class="bgc-light-blue-500 c-white p-20">
-                        <div class="peers ai-c jc-sb gap-40">
-                          <div class="peer peer-greed">
-                            <h5>November 2017</h5>
-                            <p class="mB-0">Sales Report</p>
-                          </div>
-                          <div class="peer">
-                            <h3 class="text-end">$6,000</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="table-responsive p-20">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th class="bdwT-0">Name</th>
-                              <th class="bdwT-0">Status</th>
-                              <th class="bdwT-0">Date</th>
-                              <th class="bdwT-0">Price</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="fw-600">Item #1 Name</td>
-                              <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c rounded-pill">Unavailable</span> </td>
-                              <td>Nov 18</td>
-                              <td><span class="text-success">$12</span></td>
-                            </tr>
-                            <tr>
-                              <td class="fw-600">Item #2 Name</td>
-                              <td><span class="badge bgc-deep-purple-50 c-deep-purple-700 p-10 lh-0 tt-c rounded-pill">New</span></td>
-                              <td>Nov 19</td>
-                              <td><span class="text-info">$34</span></td>
-                            </tr>
-                            <tr>
-                              <td class="fw-600">Item #3 Name</td>
-                              <td><span class="badge bgc-pink-50 c-pink-700 p-10 lh-0 tt-c rounded-pill">New</span></td>
-                              <td>Nov 20</td>
-                              <td><span class="text-danger">-$45</span></td>
-                            </tr>
-                            <tr>
-                              <td class="fw-600">Item #4 Name</td>
-                              <td><span class="badge bgc-green-50 c-green-700 p-10 lh-0 tt-c rounded-pill">Unavailable</span></td>
-                              <td>Nov 21</td>
-                              <td><span class="text-success">$65</span></td>
-                            </tr>
-                            <tr>
-                              <td class="fw-600">Item #5 Name</td>
-                              <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c rounded-pill">Used</span></td>
-                              <td>Nov 22</td>
-                              <td><span class="text-success">$78</span></td>
-                            </tr>
-                            <tr>
-                              <td class="fw-600">Item #6 Name</td>
-                              <td><span class="badge bgc-orange-50 c-orange-700 p-10 lh-0 tt-c rounded-pill">Used</span> </td>
-                              <td>Nov 23</td>
-                              <td><span class="text-danger">-$88</span></td>
-                            </tr>
-                            <tr>
-                              <td class="fw-600">Item #7 Name</td>
-                              <td><span class="badge bgc-yellow-50 c-yellow-700 p-10 lh-0 tt-c rounded-pill">Old</span></td>
-                              <td>Nov 22</td>
-                              <td><span class="text-success">$56</span></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                       </div>
-                    </div>
-                  </div>
-                  <div class="ta-c bdT w-100 p-20">
-                    <a href="#">Check all the sales</a>
-                  </div>
-                </div>
-              </div>
-              <div class="masonry-item col-md-6">
-                <!-- #Weather ==================== -->
-                <div class="bd bgc-white p-20">
-                  <div class="layers">
-                    
-                    <div class="layer w-100 mB-20">
-                      <h6 class="lh-1">Weather</h6>
-                    </div>
 
-                    
-                    <div class="layer w-100">
-                      <div class="peers ai-c jc-sb fxw-nw">
-                        <div class="peer peer-greed">
-                          <div class="layers">
-                            
-                            <div class="layer w-100">
-                              <div class="peers fxw-nw ai-c">
-                                <div class="peer mR-20">
-                                  <h3>32<sup>°F</sup></h3>
-                                </div>
-                                <div class="peer">
-                                  <canvas class="sleet" width="44" height="44"></canvas>
-                                </div>
-                              </div>
-                            </div>
-
-                            
-                            <div class="layer w-100">
-                              <span class="fw-600 c-grey-600">Partly Clouds</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="peer">
-                          <div class="layers ai-fe">
-                            <div class="layer">
-                              <h5 class="mB-5">Monday</h5>
-                            </div>
-                            <div class="layer">
-                              <span class="fw-600 c-grey-600">Nov, 01 2017</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    
-                    <div class="layer w-100 mY-30">
-                      <div class="layers bdB">
-                        <div class="layer w-100 bdT pY-5">
-                          <div class="peers ai-c jc-sb fxw-nw">
-                            <div class="peer">
-                              <span>Wind</span>
-                            </div>
-                            <div class="peer ta-r">
-                              <span class="fw-600 c-grey-800">10km/h</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="layer w-100 bdT pY-5">
-                          <div class="peers ai-c jc-sb fxw-nw">
-                            <div class="peer">
-                              <span>Sunrise</span>
-                            </div>
-                            <div class="peer ta-r">
-                              <span class="fw-600 c-grey-800">05:00 AM</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="layer w-100 bdT pY-5">
-                          <div class="peers ai-c jc-sb fxw-nw">
-                            <div class="peer">
-                              <span>Pressure</span>
-                            </div>
-                            <div class="peer ta-r">
-                              <span class="fw-600 c-grey-800">1B</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    
-                    <div class="layer w-100">
-                      <div class="peers peers-greed ai-fs ta-c">
-                        <div class="peer">
-                          <h6 class="mB-10">MON</h6>
-                          <canvas class="sleet" width="30" height="30"></canvas>
-                          <span class="d-b fw-600">32<sup>°F</sup></span>
-                        </div>
-                        <div class="peer">
-                          <h6 class="mB-10">TUE</h6>
-                          <canvas class="clear-day" width="30" height="30"></canvas>
-                          <span class="d-b fw-600">30<sup>°F</sup></span>
-                        </div>
-                        <div class="peer">
-                          <h6 class="mB-10">WED</h6>
-                          <canvas class="partly-cloudy-day" width="30" height="30"></canvas>
-                          <span class="d-b fw-600">28<sup>°F</sup></span>
-                        </div>
-                        <div class="peer">
-                          <h6 class="mB-10">THR</h6>
-                          <canvas class="cloudy" width="30" height="30"></canvas>
-                          <span class="d-b fw-600">32<sup>°F</sup></span>
-                        </div>
-                        <div class="peer">
-                          <h6 class="mB-10">FRI</h6>
-                          <canvas class="snow" width="30" height="30"></canvas>
-                          <span class="d-b fw-600">24<sup>°F</sup></span>
-                        </div>
-                        <div class="peer">
-                          <h6 class="mB-10">SAT</h6>
-                          <canvas class="wind" width="30" height="30"></canvas>
-                          <span class="d-b fw-600">28<sup>°F</sup></span>
-                        </div>
-                        <div class="peer">
-                          <h6 class="mB-10">SUN</h6>
-                          <canvas class="sleet" width="30" height="30"></canvas>
-                          <span class="d-b fw-600">32<sup>°F</sup></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <div class="masonry-item col-md-6">
-                <!-- #Chat ==================== -->
-                <div class="bd bgc-white">
-                  <div class="layers">
-                    <div class="layer w-100 p-20">
-                      <h6 class="lh-1">Quick Chat</h6>
-                    </div>
-                    <div class="layer w-100">
-                      
-                      <div class="bgc-grey-200 p-20 gapY-15">
-                        
-                        <div class="peers fxw-nw">
-                          <div class="peer mR-20">
-                            <img class="w-2r bdrs-50p" src="https://randomuser.me/api/portraits/men/11.jpg" alt="">
-                          </div>
-                          <div class="peer peer-greed">
-                            <div class="layers ai-fs gapY-5">
-                              <div class="layer">
-                                <div class="peers fxw-nw ai-c pY-3 pX-10 bgc-white bdrs-2 lh-3/2">
-                                  <div class="peer mR-10">
-                                    <small>10:00 AM</small>
-                                  </div>
-                                  <div class="peer-greed">
-                                    <span>Lorem Ipsum is simply dummy text of</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="layer">
-                                <div class="peers fxw-nw ai-c pY-3 pX-10 bgc-white bdrs-2 lh-3/2">
-                                  <div class="peer mR-10">
-                                    <small>10:00 AM</small>
-                                  </div>
-                                  <div class="peer-greed">
-                                    <span>the printing and typesetting industry.</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="layer">
-                                <div class="peers fxw-nw ai-c pY-3 pX-10 bgc-white bdrs-2 lh-3/2">
-                                  <div class="peer mR-10">
-                                    <small>10:00 AM</small>
-                                  </div>
-                                  <div class="peer-greed">
-                                    <span>Lorem Ipsum has been the industry's</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+            </div><!-- End Revenue Card -->
 
-                        
-                        <div class="peers fxw-nw ai-fe">
-                          <div class="peer ord-1 mL-20">
-                            <img class="w-2r bdrs-50p" src="https://randomuser.me/api/portraits/men/12.jpg" alt="">
-                          </div>
-                          <div class="peer peer-greed ord-0">
-                            <div class="layers ai-fe gapY-10">
-                              <div class="layer">
-                                <div class="peers fxw-nw ai-c pY-3 pX-10 bgc-white bdrs-2 lh-3/2">
-                                  <div class="peer mL-10 ord-1">
-                                    <small>10:00 AM</small>
-                                  </div>
-                                  <div class="peer-greed ord-0">
-                                    <span>Heloo</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="layer">
-                                <div class="peers fxw-nw ai-c pY-3 pX-10 bgc-white bdrs-2 lh-3/2">
-                                  <div class="peer mL-10 ord-1">
-                                    <small>10:00 AM</small>
-                                  </div>
-                                  <div class="peer-greed ord-0">
-                                    <span>??</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="p-20 bdT bgc-white">
-                        <div class="pos-r">
-                          <input type="text" class="form-control bdrs-10em m-0" placeholder="Say something...">
-                          <button type="button" class="btn btn-primary bdrs-50p w-2r p-0 h-2r pos-a r-1 t-1">
-                            <i class="fa fa-paper-plane-o"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            
+            <!-- Reports -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
                 </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Reports <span>/Today</span></h5>
+
+                  <!-- Line Chart -->
+                  <div id="reportsChart"></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new ApexCharts(document.querySelector("#reportsChart"), {
+                        series: [{
+                          name: 'Sales',
+                          data: [31, 40, 28, 51, 42, 82, 56],
+                        }, {
+                          name: 'Revenue',
+                          data: [11, 32, 45, 32, 34, 52, 41]
+                        }, {
+                          name: 'Customers',
+                          data: [15, 11, 32, 18, 9, 24, 11]
+                        }],
+                        chart: {
+                          height: 350,
+                          type: 'area',
+                          toolbar: {
+                            show: false
+                          },
+                        },
+                        markers: {
+                          size: 4
+                        },
+                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                        fill: {
+                          type: "gradient",
+                          gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.4,
+                            stops: [0, 90, 100]
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false
+                        },
+                        stroke: {
+                          curve: 'smooth',
+                          width: 2
+                        },
+                        xaxis: {
+                          type: 'datetime',
+                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                        },
+                        tooltip: {
+                          x: {
+                            format: 'dd/MM/yy HH:mm'
+                          },
+                        }
+                      }).render();
+                    });
+                  </script>
+                  <!-- End Line Chart -->
+
+                </div>
+
               </div>
-            </div>
+            </div><!-- End Reports -->
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+
+                  <table class="table table-borderless datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><a href="#">#2457</a></th>
+                        <td>Brandon Jacob</td>
+                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                        <td>$64</td>
+                        <td><span class="badge bg-success">Approved</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#2147</a></th>
+                        <td>Bridie Kessler</td>
+                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
+                        <td>$47</td>
+                        <td><span class="badge bg-warning">Pending</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#2049</a></th>
+                        <td>Ashleigh Langosh</td>
+                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
+                        <td>$147</td>
+                        <td><span class="badge bg-success">Approved</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#2644</a></th>
+                        <td>Angus Grady</td>
+                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
+                        <td>$67</td>
+                        <td><span class="badge bg-danger">Rejected</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#2644</a></th>
+                        <td>Raheem Lehner</td>
+                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
+                        <td>$165</td>
+                        <td><span class="badge bg-success">Approved</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+
+            <!-- Top Selling -->
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body pb-0">
+                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
+
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Preview</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Sold</th>
+                        <th scope="col">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
+                        <td>$64</td>
+                        <td class="fw-bold">124</td>
+                        <td>$5,828</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
+                        <td>$46</td>
+                        <td class="fw-bold">98</td>
+                        <td>$4,508</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
+                        <td>$59</td>
+                        <td class="fw-bold">74</td>
+                        <td>$4,366</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
+                        <td>$32</td>
+                        <td class="fw-bold">63</td>
+                        <td>$2,016</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
+                        <td>$79</td>
+                        <td class="fw-bold">41</td>
+                        <td>$3,239</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Top Selling -->
+
           </div>
-        </main>
-        <?php require("inc/footer.php");?>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">32 min</div>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">56 min</div>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <div class="activity-content">
+                    Voluptatem blanditiis blanditiis eveniet
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 hrs</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Voluptates corrupti molestias voluptatem
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">1 day</div>
+                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <div class="activity-content">
+                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 days</div>
+                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                  <div class="activity-content">
+                    Est sit eum reiciendis exercitationem
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">4 weeks</div>
+                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                  <div class="activity-content">
+                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                  </div>
+                </div><!-- End activity item-->
+
+              </div>
+
+            </div>
+          </div><!-- End Recent Activity -->
+
+          <!-- Budget Report -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
+
+              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
+                    legend: {
+                      data: ['Allocated Budget', 'Actual Spending']
+                    },
+                    radar: {
+                      // shape: 'circle',
+                      indicator: [{
+                          name: 'Sales',
+                          max: 6500
+                        },
+                        {
+                          name: 'Administration',
+                          max: 16000
+                        },
+                        {
+                          name: 'Information Technology',
+                          max: 30000
+                        },
+                        {
+                          name: 'Customer Support',
+                          max: 38000
+                        },
+                        {
+                          name: 'Development',
+                          max: 52000
+                        },
+                        {
+                          name: 'Marketing',
+                          max: 25000
+                        }
+                      ]
+                    },
+                    series: [{
+                      name: 'Budget vs spending',
+                      type: 'radar',
+                      data: [{
+                          value: [4200, 3000, 20000, 35000, 50000, 18000],
+                          name: 'Allocated Budget'
+                        },
+                        {
+                          value: [5000, 14000, 28000, 26000, 42000, 21000],
+                          name: 'Actual Spending'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
+          </div><!-- End Budget Report -->
+
+          <!-- Website Traffic -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+
+              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  echarts.init(document.querySelector("#trafficChart")).setOption({
+                    tooltip: {
+                      trigger: 'item'
+                    },
+                    legend: {
+                      top: '5%',
+                      left: 'center'
+                    },
+                    series: [{
+                      name: 'Access From',
+                      type: 'pie',
+                      radius: ['40%', '70%'],
+                      avoidLabelOverlap: false,
+                      label: {
+                        show: false,
+                        position: 'center'
+                      },
+                      emphasis: {
+                        label: {
+                          show: true,
+                          fontSize: '18',
+                          fontWeight: 'bold'
+                        }
+                      },
+                      labelLine: {
+                        show: false
+                      },
+                      data: [{
+                          value: 1048,
+                          name: 'Search Engine'
+                        },
+                        {
+                          value: 735,
+                          name: 'Direct'
+                        },
+                        {
+                          value: 580,
+                          name: 'Email'
+                        },
+                        {
+                          value: 484,
+                          name: 'Union Ads'
+                        },
+                        {
+                          value: 300,
+                          name: 'Video Ads'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
+          </div><!-- End Website Traffic -->
+
+          <!-- News & Updates Traffic -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+
+              <div class="news">
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-1.jpg" alt="">
+                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
+                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-2.jpg" alt="">
+                  <h4><a href="#">Quidem autem et impedit</a></h4>
+                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-3.jpg" alt="">
+                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-4.jpg" alt="">
+                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-5.jpg" alt="">
+                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+                </div>
+
+              </div><!-- End sidebar recent posts-->
+
+            </div>
+          </div><!-- End News & Updates -->
+
+        </div><!-- End Right side columns -->
+
       </div>
-    </div>
-  </body>
-    <script defer="defer" src="dist/js/jquery-3.7.1.js"></script>
-    <script defer="defer" src="custom/js/functions.js"></script>
-    <script defer="defer" src="custom/js/login.js"></script>
+    </section>
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Custom JS Files -->
+  <script src="custom/js/login.js"></script>
+  <script src="custom/js/functions.js"></script>
+
+</body>
+
 </html>

@@ -1,56 +1,77 @@
-document.write('<script type="text/javascript" src="functions.js"></script>');
-$(document).ready(function() {
+// document.write('<script type="text/javascript" src="functions.js"></script>');
+let ApiURL = $("#ApiURL").val();
+
+function HideLoader(){
+    $(".backdrop").hide()
+}
+
+function ShowLoader(){
+    $(".backdrop").show()
+}
+
+function loadingButton(id, text){
+    if($(id).attr('disabled')){
+        $(id).attr('disabled',false)
+        $(id).html(text)
+    }else{
+        $(id).attr('disabled',true)
+        $(id).html(text)
+    }
+}
+
+function getCookie(cookieName) {
+    let cookie = {};
+    document.cookie.split(';').forEach(function(el) {
+        let indexOfEquals = el.indexOf('=');
+        if (indexOfEquals !== -1) {
+            let key = el.substring(0, indexOfEquals).trim();
+            let value = el.substring(indexOfEquals + 1).trim();
+            cookie[key] = value;
+        }
+    });
+    return cookie[cookieName];
+  }
+
+
 getProductCategoryList()
 
 
-categoryIcon.onchange = evt => {
-    const [file] = categoryIcon.files
-    if (file) {
-        CategoryIconPreview.src = URL.createObjectURL(file)
-    }
-  }
 
-$("#addProductCategory").on("submit",function(e){
-    // $("#AddProductCategoryModal").modal('hide');
+
+  $("#addProductCategoryForm").on("submit", function(e) {
+    loadingButton("#CategorySaveButton", "Loading...")
     e.preventDefault();
-    ShowLoader()
     $("#message").html('')
     let data = new FormData(this);
+    data.append("SmallImage",null)
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${getCookie('Token')}`);
     const requestOptions = {
         method: 'POST',
         body: data, 
-        mode: 'cors',
         headers: myHeaders,
         credentials: 'include',
       };
-      
-    fetch(ApiURL + '/ProductCategory/addProductCategory', requestOptions)
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(errorResponse => {
-                throw { status: response.status, error: errorResponse };
-            });
+
+      $.ajax({
+        type: "POST",
+        data: data,
+        url: ApiURL + '/ProductCategory/addProductCategory',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            $('#addProductCategoryForm')[0].reset();
+            $("#AddProductCategoryModal").modal('hide')
+            loadingButton("#CategorySaveButton", "Save Changes")
+            getProductCategoryList()
+        },
+        error : function(err){
+            loadingButton("#CategorySaveButton", "Save Changes")
         }
-        return response.json();
-    })
-    .then(responseData => {
-        hideModal("#AddProductCategoryModal");
-        $("#addProductCategory")[0].reset();
-        HideLoader();
-        getProductCategoryList()
-    })
-    .catch(error => {
-        console.log(error)
-        HideLoader();
-        let errorMessage;
-        if (error && error.error && error.error.Message) {
-            errorMessage = error.error.Message;
-        } else {
-            errorMessage = "Unknown Error";
-        }
-        $("#message").html(`<span class="text-danger fw-bold">${errorMessage}</span>`)
     });
   
 })
@@ -58,46 +79,56 @@ $("#addProductCategory").on("submit",function(e){
 
 function getProductCategoryList(){
     ShowLoader()
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${getCookie('Token')}`);
-    const requestOptions = {
-        method: 'GET',
-        mode: 'cors',
-        headers: myHeaders,
-        credentials: 'include',
-    };
-    
-    fetch(ApiURL + '/ProductCategory/getProductCategoryList', requestOptions)
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(errorResponse => {
-                throw { status: response.status, error: errorResponse };
-            });
+    $.ajax({
+        type: "GET",
+        // data: data,
+        url: ApiURL + '/ProductCategory/getProductCategoryList',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            setCategoryRowInTable(responseData)
+            HideLoader()
+        },
+        error : function(err){
+            HideLoader()
+
         }
-        return response.json();
-    })
-    .then(responseData => {
-        $("#productCategoryTableBody").html("");
-        //Show Data in table
-        $.each(responseData.ProductCategoryList, function(key, Category) {
-            let tr = `
-                    <tr>
-                        <td>${Category.CategoryID}</td>
-                        <td> <img src="${Category.SmallImage}" width="50px" height="50px" alt="" srcset=""></td>
-                        <td>${Category.CategoryName}</td>
-                        <td>${Category.CategoryDesc}</td>
-                        <td>${Category.Created_At}</td>
-                        <td>${Category.Created_By}</td>
-                        <td></td>
-                    </tr>`;
-            $("#productCategoryTableBody").append(tr);
-        });
-        HideLoader();
-    })
-    .catch(error => {
-        HideLoader();
-        // console.log(error)
     });
 }
 
-});
+
+function setCategoryRowInTable(jsonData){
+    // let data = localStorage.getItem("ProductCategory");
+    $('#productCategoryTable').DataTable().destroy();
+
+    $('#productCategoryTable').DataTable({
+        data: jsonData.ProductCategoryList,  // Get the data object
+        columns: [
+            { 'data': 'CategoryID' },
+            {
+                'data': 'SmallImage',
+                'render': function (data, type, row, meta) {
+                    let path;
+                    if(data == null){
+                        path = "custom/img/noimage.jpg";
+                    }else{
+                        path = data;
+                    }
+                    return `<img src="${path}" width="35px"/>`;
+                }
+            },
+            { 'data': 'CategoryName' },
+            { 'data': 'Created_By' },
+            { 'data': 'Created_At' },
+            { 'data': 'CategoryID',
+              'render': function(data, type, row, meta){
+                return `<button class="btn btn-danger btn-sm">Delete</button>`;
+              }
+            },
+        ]
+    });
+}

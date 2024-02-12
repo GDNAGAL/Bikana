@@ -1,17 +1,11 @@
 let ApiURL = $("#ApiURL").val();
 
 function HideLoader(){
-    const loader = document.getElementById('loader');
-    setTimeout(function() {
-    loader.classList.add('fadeOut');
-    }, 300);
+    $(".backdrop").hide()
 }
 
 function ShowLoader(){
-    const loader = document.getElementById('loader');
-    setTimeout(function() {
-    loader.classList.remove('fadeOut');
-    }, 300);
+    $(".backdrop").show()
 }
 
 

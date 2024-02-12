@@ -1,4 +1,4 @@
-document.write('<script type="text/javascript" src="functions.js"></script>');
+// document.write('<script type="text/javascript" src="custom/js/functions.js"></script>');
 
 
 window.addEventListener('load', function load() {

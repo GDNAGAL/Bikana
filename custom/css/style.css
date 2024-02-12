@@ -1,95 +1,10 @@
-body{
-    margin:0;
-}
-
-#CategoryIconPreview{
-  border: 2px solid #7e7e7e;
-  padding: 2px;
-}
-
-#loader {
-    transition: all 0.3s ease-in-out;
-    opacity: 0.8;
-    visibility: visible;
+.backdrop{
     position: fixed;
     height: 100vh;
-    width: 100%;
-    /* background: #fff; */
-    z-index: 90000;
-
-    /* -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px); */
-    /* filter: blur(15px); */
-    /* width: 100px;
-    height: 100px; */
-    background-color: #f4f2fc;
-  }
-
-  #loader.fadeOut {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .spinner {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: calc(50% - 30px);
-    left: calc(50% - 30px);
-    border: 8px solid #c4b8f2;
-    border-top: 8px solid transparent;
-    border-radius: 50%;
-    -webkit-animation: spin 1s linear infinite; /* Adjust the animation name and duration */
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @-webkit-keyframes spin {
-    0% {
-      -webkit-transform: rotate(0deg);
-    }
-    100% {
-      -webkit-transform: rotate(360deg);
-    }
-  }
-  
-  /* .spinner {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: calc(50% - 30px);
-    left: calc(50% - 30px);
-    background-color: #c4b8f2;
-    border-radius: 100%;
-    -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-    animation: sk-scaleout 1.0s infinite ease-in-out;
-  } */
-
-  @-webkit-keyframes sk-scaleout {
-    0% { -webkit-transform: scale(0) }
-    100% {
-      -webkit-transform: scale(1.0);
-      opacity: 0;
-    }
-  }
-
-  @keyframes sk-scaleout {
-    0% {
-      -webkit-transform: scale(0);
-      transform: scale(0);
-    } 100% {
-      -webkit-transform: scale(1.0);
-      transform: scale(1.0);
-      opacity: 0;
-    }
-  }
+    width:100vw;
+    z-index: 100;
+    line-height: 100vh;
+    text-align: center;
+    background-color: #fff3f2;
+    opacity: 0.5;
+}

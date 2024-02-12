@@ -5,62 +5,118 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-        <title>Sign In</title>
-        <link rel="stylesheet" href="dist/css/style.css"></head>
-        <link rel="stylesheet" href="custom/css/style.css">
-        <script defer="defer" src="dist/js/main.js"></script>
-    </head>
-    <body class="app">
-        <div id="loader">
-            <div class="spinner"></div>
-        </div>
-        <div class="peers ai-s fxw-nw h-100vh">
-        <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style='background-image: url("dist/img/bg.jpgd")'>
-            <div class="pos-a centerXY">
-            <div class="bgc-white bdrs-50p pos-r" style="width: 120px; height: 120px;">
-                <img class="pos-a centerXY" src="dist/img/logo.png" alt="">
-            </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style="min-width: 320px;">
-            <h3 class="fw-300 c-grey-900 mB-40">Login</h3>
-            <span id="message"></span>
-            <form autocomplete="off" id="loginForm">
-            <!-- <input autocomplete="false" name="hidden" type="text" style="display:none;"> -->
-            <div class="mb-3">
-                <label class="text-normal text-dark form-label">Username</label>
-                <input type="text" class="form-control" placeholder="ENTER USERNAME" name="Username">
-            </div>
-            <div class="mb-3">
-                <label class="text-normal text-dark form-label">Password</label>
-                <input type="password" class="form-control" autocomplete="off" placeholder="ENTER PASSWORD" name="Password">
-            </div>
-            <div class="">
-                <div class="peers ai-c jc-sb fxw-nw">
-                <div class="peer">
-                    <div class="checkbox checkbox-circle checkbox-info peers ai-c">
-                    <input type="checkbox" id="inputCall1" name="inputCheckboxesCall" class="peer">
-                    <label for="inputCall1" class="peers peer-greed js-sb ai-c form-label">
-                        <span class="peer peer-greed">Remember Me</span>
-                    </label>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Login</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- Custom CSS File -->
+  <link href="custom/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="backdrop">
+  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+  <main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                    <p class="text-center small">Enter your username & password to login</p>
+                  </div>
+
+                  <form class="row g-3 needs-validation" novalidate id="loginForm">
+                    <span id="message"></span>
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Username</label>
+                        <input type="text" name="Username" placeholder="Enter Username" class="form-control shadow-none" id="yourUsername" required>
+                        <div class="invalid-feedback">Please enter your username.</div>
                     </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Password</label>
+                      <input type="password" name="Password" placeholder="Enter Password" class="form-control shadow-none" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter your password!</div>
+                    </div>
+
+                    <!-- <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                      </div>
+                    </div> -->
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100 shadow-none" type="submit">Login</button>
+                    </div>
+                  </form>
+
                 </div>
-                <div class="peer">
-                    <button type="submit" class="btn btn-primary btn-color">Login</button>
-                </div>
-                </div>
+              </div>
             </div>
-            </form>
+          </div>
         </div>
-        <input id="ApiURL" type="hidden" value="<?php echo $ApiURL;?>"/>
-        </div>
-    </body>
-    <script defer="defer" src="dist/js/jquery-3.7.1.js"></script>
-    <script defer="defer" src="custom/js/functions.js"></script>
-    <script defer="defer" src="custom/js/login.js"></script>
+
+      </section>
+      <input id="ApiURL" type="hidden" value="<?php echo $ApiURL;?>"/>
+    </div>
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Custom JS Files -->
+  <script src="custom/js/login.js"></script>
+  <script src="custom/js/functions.js"></script>
+</body>
 
 </html>
