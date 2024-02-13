@@ -1,4 +1,3 @@
-// document.write('<script type="text/javascript" src="functions.js"></script>');
 let ApiURL = $("#ApiURL").val();
 
 function HideLoader(){
@@ -33,22 +32,26 @@ function getCookie(cookieName) {
   }
 
 
+
+
+
+
+
+
+//Call Starting Functions
 getProductCategoryList()
+getInventoryList()
 
-
-
-
- $("#addProductCategoryForm").on("submit", function(e) {
-    loadingButton("#CategorySaveButton", "Loading...")
+$("#addInventoryForm").on("submit", function(e) {
+    loadingButton("#InventorySaveButton", "Saving...")
     e.preventDefault();
     $("#message").html('')
     let data = new FormData(this);
-    data.append("SmallImage",null)
-    
+
     $.ajax({
         type: "POST",
         data: data,
-        url: ApiURL + '/ProductCategory/addProductCategory',
+        url: ApiURL + '/Inventory/addInventory',
         headers: {
             'Authorization': 'Bearer ' + getCookie('Token')
         },
@@ -56,21 +59,20 @@ getProductCategoryList()
         cache: false,             
         processData:false,
         success: function(responseData){
-            $('#addProductCategoryForm')[0].reset();
-            $("#AddProductCategoryModal").modal('hide')
-            loadingButton("#CategorySaveButton", "Save Changes")
+            $('#addInventoryForm')[0].reset();
+            $("#AddInventoryModal").modal('hide')
+            loadingButton("#InventorySaveButton", "Save Changes")
             Swal.fire({
                 title: "Success",
-                text: "Category Added Successfully",
+                text: "Added Successfully",
                 icon: "success",
             });
-            getProductCategoryList()
+            getInventoryList()
         },
         error : function(err){
-            loadingButton("#CategorySaveButton", "Save Changes")
+            loadingButton("#InventorySaveButton", "Save Changes")
         }
     });
-  
 })
 
 
@@ -87,7 +89,7 @@ function getProductCategoryList(){
         cache: false,             
         processData:false,
         success: function(responseData){
-            setCategoryRowInTable(responseData)
+            setCategoryInSelectBox(responseData)
             HideLoader()
         },
         error : function(err){
@@ -98,28 +100,52 @@ function getProductCategoryList(){
 }
 
 
-function setCategoryRowInTable(jsonData){
+function setCategoryInSelectBox(jsonData){
     // let data = localStorage.getItem("ProductCategory");
-    $('#productCategoryTable').DataTable().destroy();
+    $('#categorySelectBox').html(`<option value="" selected disabled>Select Category</option>`);
+    $.each(jsonData.ProductCategoryList, function(i,Category){
+        $('#categorySelectBox').append(`<option value="${Category.CategoryID}">${Category.CategoryName}</option>`)
+    })
+}
 
-    $('#productCategoryTable').DataTable({
-        data: jsonData.ProductCategoryList,  // Get the data object
+function getInventoryList(){
+    ShowLoader()
+    $.ajax({
+        type: "GET",
+        // data: data,
+        url: ApiURL + '/Inventory/getInventoryList',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            setInventoryRowInTable(responseData)
+            HideLoader()
+        },
+        error : function(err){
+            HideLoader()
+
+        }
+    });
+}
+
+function setInventoryRowInTable(jsonData){
+    // let data = localStorage.getItem("ProductCategory");
+    $('#inventoryTable').DataTable().destroy();
+
+    $('#inventoryTable').DataTable({
+        data: jsonData.InventoryList,  // Get the data object
         columns: [
-            { 'data': 'CategoryID' },
-            {
-                'data': 'SmallImage',
-                'render': function (data, type, row, meta) {
-                    let path;
-                    if(data == null){
-                        path = "custom/img/noimage.jpg";
-                    }else{
-                        path = data;
-                    }
-                    return `<img src="${path}" width="35px"/>`;
-                }
-            },
+            { 'data': 'InventoryID' },
+            { 'data': 'ProductName' },
             { 'data': 'CategoryName' },
-            { 'data': 'Created_By' },
+            { 'data': 'Created_By',
+              'render': function(data, type, row, meta){
+                return `<a href="javascript:void(0)">${data}</a>`;
+              }
+            },
             { 'data': 'Created_At' },
             { 'data': 'CategoryID',
               'render': function(data, type, row, meta){

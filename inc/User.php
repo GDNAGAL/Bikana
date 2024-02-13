@@ -1,6 +1,7 @@
 <?php
 $UserName = "";
 $UserGroupID;
+$UserGroupName="";
 if (isset($_COOKIE['Token'])) {
     $tokenValue = $_COOKIE['Token'];
 
@@ -24,9 +25,10 @@ if (isset($_COOKIE['Token'])) {
     $response = json_decode(curl_exec($curl),true);
     $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     if($httpCode == 200){
-        global $UserName, $UserGroupID;
+        global $UserName, $UserGroupID, $UserGroupName;
         $UserName = $response['User']['Name'];
         $UserGroupID = $response['User']['UserGroupID'];
+        $UserGroupName = $response['User']['UserGroupName'];
         
         // echo $response;
         

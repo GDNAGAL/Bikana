@@ -904,7 +904,7 @@ $jscomp.polyfill("Array.prototype.find", function(l) {
             d = a.oLanguage,
             e = a.oPreviousSearch,
             h = a.aanFeatures,
-            f = '<input type="search" class="' + b.sFilterInput + '"/>',
+            f = '<input type="search" placeholder="Type to Search" class="' + b.sFilterInput + '"/>',
             g = d.sSearch;
         g = g.match(/_INPUT_/) ? g.replace("_INPUT_", f) : g + f;
         b = l("<div/>", {
@@ -3551,17 +3551,17 @@ $jscomp.polyfill("Array.prototype.find", function(l) {
                 sNext: "Next",
                 sPrevious: "Previous"
             },
-            sEmptyTable: "No data available in table",
-            sInfo: "Showing _START_ to _END_ of _TOTAL_ entries",
-            sInfoEmpty: "Showing 0 to 0 of 0 entries",
-            sInfoFiltered: "(filtered from _MAX_ total entries)",
+            sEmptyTable: "No Data Available",
+            sInfo: "Showing _START_ to _END_ of _TOTAL_ Records",
+            sInfoEmpty: "Showing 0 to 0 of 0 Records",
+            sInfoFiltered: "(filtered from _MAX_ total Records)",
             sInfoPostFix: "",
             sDecimal: "",
             sThousands: ",",
-            sLengthMenu: "Show _MENU_ entries",
+            sLengthMenu: "Show _MENU_ Records",
             sLoadingRecords: "Loading...",
             sProcessing: "Processing...",
-            sSearch: "Search:",
+            sSearch: "",
             sSearchPlaceholder: "",
             sUrl: "",
             sZeroRecords: "No matching records found"

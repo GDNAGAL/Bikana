@@ -13,49 +13,49 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="Products">
-      <i class="bi bi-person"></i>
+      <i class="bi bi-list-ul"></i>
       <span>Products</span>
     </a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-faq.html">
-      <i class="bi bi-question-circle"></i>
+    <a class="nav-link collapsed" href="Inventory">
+      <i class="bi bi-list-ul"></i>
       <span>Inventory</span>
     </a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="ProductCategory">
-      <i class="bi bi-envelope"></i>
+      <i class="bi bi-tag"></i>
       <span>Category</span>
     </a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-register.html">
-      <i class="bi bi-card-list"></i>
+    <a class="nav-link collapsed" href="Vendors">
+      <i class="bi bi-person"></i>
       <span>Vendors</span>
     </a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="pages-login.html">
-      <i class="bi bi-box-arrow-in-right"></i>
+      <i class="bi bi-shop"></i>
       <span>Stores</span>
     </a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="pages-error-404.html">
-      <i class="bi bi-dash-circle"></i>
+      <i class="bi bi-person"></i>
       <span>Customers</span>
     </a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="pages-blank.html">
-      <i class="bi bi-file-earmark"></i>
+      <i class="bi bi-cart-check"></i>
       <span>Orders</span>
     </a>
   </li>

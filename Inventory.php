@@ -59,8 +59,8 @@
 
           <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Products 
-                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add New Product</li>
+                <h5 class="card-title">Product Inventory 
+                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddInventoryModal">Add New Inventory</li>
                 </h5>
               <!-- Table with stripped rows -->
               <table class="table table-hovers text-center align-middle" id="inventoryTable" width="100%">
@@ -91,38 +91,33 @@
 
 
     <!-- Modal -->
-    <div class="modal fade hide" id="AddProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal fade hide" id="AddInventoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Add Inventory</h5>
           <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form class="" id="addProductForm" autocomplete="off">
+        <form class="" id="addInventoryForm" autocomplete="off">
         <div class="modal-body">
           <span id="message"></span>
-          <div class="mb-3 autocomplete">
-            <label class="form-label" for="categorytitle">Search Product :</label>
-            <input type="text" class="form-control shadow-none" id="SearchInventoryTextBox" placeholder="Search Product In Inventory" name="InventoryName" required>
-            <input type="hidden" class="form-control shadow-none" id="InventoryIDTextBox"  name="InventoryID" required>
-          </div>
-          <div class="d-none" id="restForm">
             <div class="mb-3">
-              <label class="form-label" for="categorytitle">Product Name :</label>
-              <input type="text" class="form-control shadow-none" id="ProductNameInput" placeholder="Enter Product Name" name="ProductName" required>
+              <label class="form-label" for="categorytitle">Product Title :</label>
+              <input type="text" class="form-control shadow-none" id="categorytitle" placeholder="Enter Product Category Title" name="ProductName" required>
             </div>
             <div class="mb-3">
               <label class="form-label" for="CategoryDescription">Product Description :</label>
-              <textarea type="text" class="form-control shadow-none" id="ProductDescInput" rows="4" placeholder="Enter Description" name="ProductDesc" required></textarea>
+              <textarea type="text" class="form-control shadow-none" id="CategoryDescription" rows="4" placeholder="Enter Description" name="ProductDesc" required></textarea>
             </div>
             <div class="mb-3">
               <label class="form-label" for="categorytitle">Product Category :</label>
-              <select class="form-control shadow-none" id="categorySelectBox" name="CategoryID" required></select>
+              <select class="form-control shadow-none" id="categorySelectBox" name="CategoryID" required>
+                
+              </select>
             </div>
           </div>
-        </div>
         <div class="modal-footer">
-          <button type="submit" id="InventorySaveButton" class="btn btn-dark float-start" disabled>Save Changes</button>
+          <button type="submit" id="InventorySaveButton" class="btn btn-dark float-start" >Save Changes</button>
         </div>
         </form>
       </div>
@@ -148,7 +143,7 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Custom JS Files -->
-  <script src="custom/js/Products.js"></script>
+  <script src="custom/js/Inventory.js"></script>
 </body>
 
 </html>
