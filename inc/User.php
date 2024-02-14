@@ -2,6 +2,8 @@
 $UserName = "";
 $UserGroupID;
 $UserGroupName="";
+$UserPermissions = [];
+
 if (isset($_COOKIE['Token'])) {
     $tokenValue = $_COOKIE['Token'];
 
@@ -25,13 +27,13 @@ if (isset($_COOKIE['Token'])) {
     $response = json_decode(curl_exec($curl),true);
     $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     if($httpCode == 200){
-        global $UserName, $UserGroupID, $UserGroupName;
+        global $UserName, $UserGroupID, $UserGroupName, $UserPermissions;
         $UserName = $response['User']['Name'];
         $UserGroupID = $response['User']['UserGroupID'];
         $UserGroupName = $response['User']['UserGroupName'];
         
         // echo $response;
-        
+        $UserPermissions = $response['UserPermission'];
         
         
         
@@ -45,13 +47,14 @@ if (isset($_COOKIE['Token'])) {
     header("Location: logout");
 }
 
-function userpermission($permissionName){
+function userpermission($permissionKey){
+    global $UserGroupID, $UserGroupName, $UserPermissions;
     if($UserGroupID == 1){
         return true;
     }else{
-        if($permissions[$permissionName]==1){
-            return true;
-        }else{
+        if (!empty($UserPermissions) && is_array($UserPermissions)) {
+            return in_array($permissionKey, $UserPermissions);
+        } else {
             return false;
         }
     }

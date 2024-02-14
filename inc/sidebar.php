@@ -10,13 +10,17 @@
   </li><!-- End Dashboard Nav -->
 
   <!-- <li class="nav-heading">Pages</li> -->
-
+<?php 
+if(userpermission("CanManageProducts")){ ?>
+  
   <li class="nav-item">
     <a class="nav-link collapsed" href="Products">
       <i class="bi bi-list-ul"></i>
       <span>Products</span>
     </a>
   </li>
+
+<?php } ?>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="Inventory">
@@ -65,13 +69,17 @@
       <span>CRM Users</span>
     </a>
   </li>
+<?php 
+if(userpermission("CanManageUserRoles")){ ?>
+
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
+    <a class="nav-link collapsed" href="UserRoles">
       <i class="bi bi-columns-gap"></i>
       <span>User Roles</span>
     </a>
   </li>
 
+<?php } ?>
 </ul>
 
 </aside><!-- End Sidebar-->

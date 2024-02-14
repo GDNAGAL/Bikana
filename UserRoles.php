@@ -1,5 +1,5 @@
 <?php require("inc/User.php");
-  if(!userpermission("CanManageProducts")){
+  if(!userpermission("CanManageUserRoles")){
     header("Location: UnAuthorized");
     exit;
   }
@@ -59,31 +59,36 @@
 
     <section class="section">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
 
           <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Products 
-                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add New Product</li>
+                <h5 class="card-title border-bottom pb-4">User Roles 
+                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add New User Role</li>
                 </h5>
-              <!-- Table with stripped rows -->
-              <table class="table table-hovers text-center align-middle" id="productTable" width="100%">
-                <thead>
-                  <tr>
-                    <th scope="col">Product Code</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Product Category</th>
-                    <th scope="col">Store</th>
-                    <th scope="col">Created Time</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                 
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+                <div class="list-group" id="roles"></div>
+            </div>
+          </div>
 
+        </div>
+        <div class="col-lg-8">
+
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">User Role Permissions 
+                  <li class="btn btn-success float-end d-none" id="savePermissionButton">Save Permissions</li>
+                </h5>
+                <div>
+                <table class="table table-bordered">
+                  <tr>
+                    <th class="text-center">Status</th>
+                    <th>Permission Name</th>
+                  </tr>
+                  <tbody id="permissions">
+
+                  </tbody>
+                </table>
+                </div>
             </div>
           </div>
 
@@ -179,7 +184,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" id="ProductSaveButton" class="btn btn-dark float-start" disabled>Save Changes</button>
+          <button type="submit" id="UserRolesaveButton" class="btn btn-dark float-start" disabled>Save Changes</button>
         </div>
         </form>
       </div>
@@ -205,7 +210,7 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Custom JS Files -->
-  <script src="custom/js/Products.js"></script>
+  <script src="custom/js/UserRoles.js"></script>
   <script src="custom/js/functions.js"></script>
 </body>
 
