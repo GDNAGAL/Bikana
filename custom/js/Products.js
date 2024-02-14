@@ -39,18 +39,19 @@ function getCookie(cookieName) {
 
 //Call Starting Functions
 getProductCategoryList()
-getInventoryList()
+getProductList()
+getUNITList()
 
-$("#addInventoryForm").on("submit", function(e) {
-    loadingButton("#InventorySaveButton", "Saving...")
+$("#addProductForm").on("submit", function(e) {
     e.preventDefault();
+    loadingButton("#ProductSaveButton", "Saving...")
     $("#message").html('')
     let data = new FormData(this);
 
     $.ajax({
         type: "POST",
         data: data,
-        url: ApiURL + '/Inventory/addInventory',
+        url: ApiURL + '/Product/addProduct',
         headers: {
             'Authorization': 'Bearer ' + getCookie('Token')
         },
@@ -58,13 +59,23 @@ $("#addInventoryForm").on("submit", function(e) {
         cache: false,             
         processData:false,
         success: function(responseData){
-            $('#addInventoryForm')[0].reset();
-            $("#AddInventoryModal").modal('hide')
-            loadingButton("#InventorySaveButton", "Save Changes")
-            getInventoryList()
+            $('#addProductForm')[0].reset();
+            $("#AddProductModal").modal('hide')
+            loadingButton("#ProductSaveButton", "Save Changes")
+            Swal.fire({
+                title: "Success",
+                text: responseData.Message,
+                icon: "success",
+            });
+            getProductList()
         },
         error : function(err){
-            loadingButton("#InventorySaveButton", "Save Changes")
+            loadingButton("#ProductSaveButton", "Save Changes")
+            Swal.fire({
+                title: "Failed",
+                text: err.responseJSON.Message,
+                icon: "error",
+            });
         }
     });
 })
@@ -96,18 +107,18 @@ function getProductCategoryList(){
 
 function setCategoryInSelectBox(jsonData){
     // let data = localStorage.getItem("ProductCategory");
-    $('#categorySelectBox').html(`<option value="" selected disabled>Select Category</option>`);
+    $('#categorySelectBox').html(`<option value="">Select Category</option>`);
     $.each(jsonData.ProductCategoryList, function(i,Category){
         $('#categorySelectBox').append(`<option value="${Category.CategoryID}">${Category.CategoryName}</option>`)
     })
 }
 
-function getInventoryList(){
+function getProductList(){
     ShowLoader()
     $.ajax({
         type: "GET",
         // data: data,
-        url: ApiURL + '/Inventory/getInventoryList',
+        url: ApiURL + '/Product/getProductList',
         headers: {
             'Authorization': 'Bearer ' + getCookie('Token')
         },
@@ -115,7 +126,7 @@ function getInventoryList(){
         cache: false,             
         processData:false,
         success: function(responseData){
-            setInventoryRowInTable(responseData)
+            setProductRowInTable(responseData)
             HideLoader()
         },
         error : function(err){
@@ -125,23 +136,63 @@ function getInventoryList(){
     });
 }
 
-function setInventoryRowInTable(jsonData){
-    // let data = localStorage.getItem("ProductCategory");
-    $('#inventoryTable').DataTable().destroy();
+function getUNITList(){
+    ShowLoader()
+    $.ajax({
+        type: "GET",
+        // data: data,
+        url: ApiURL + '/Product/getUNITList.php',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            $('#varientUnitSelectBox').html(`<option value="">Select UNIT</option>`);
+            $.each(responseData.UNITList, function(i,Unit){
+                $('#varientUnitSelectBox').append(`<option value="${Unit.UnitID}">${Unit.UnitText}</option>`)
+            })
+            HideLoader()
+        },
+        error : function(err){
+            HideLoader()
 
-    $('#inventoryTable').DataTable({
-        data: jsonData.InventoryList,  // Get the data object
+        }
+    });
+}
+
+$("#MRPCheckBox").on("change",function(){
+    if($(this).prop('checked') == true){
+        $("#PriceInput").val($("#MRPInput").val())
+    }else{
+        $("#PriceInput").val("")
+    }
+})
+
+$("#MRPInput").on("keyup",function(){
+    if($("#MRPCheckBox").prop('checked') == true){
+        $("#PriceInput").val($("#MRPInput").val())
+    }
+})
+
+function setProductRowInTable(jsonData){
+    // let data = localStorage.getItem("ProductCategory");
+    $('#productTable').DataTable().destroy();
+
+    $('#productTable').DataTable({
+        data: jsonData.ProductList,  // Get the data object
         columns: [
-            { 'data': 'InventoryID' },
+            { 'data': 'ProductID' },
             { 'data': 'ProductName' },
             { 'data': 'CategoryName' },
-            { 'data': 'Created_By',
+            { 'data': 'Name',
               'render': function(data, type, row, meta){
                 return `<a href="javascript:void(0)">${data}</a>`;
               }
             },
             { 'data': 'Created_At' },
-            { 'data': 'CategoryID',
+            { 'data': 'ProductID',
               'render': function(data, type, row, meta){
                 return `<button class="btn btn-danger btn-sm">Delete</button>`;
               }
@@ -216,8 +267,8 @@ function InventorySuggestions(arr,val,e){
             /*execute a function when someone clicks on the item value (DIV element):*/
             b.addEventListener("click", function(e) {
                 /*insert the value for the autocomplete text field:*/
-                inputc.value = this.getElementsByTagName("input")[0].value;
                 let selectedProductObj = arr.find(item => item.InventoryID === this.getElementsByTagName("input")[0].value);
+                inputc.value = `${selectedProductObj.InventoryID}-${selectedProductObj.ProductName}`;
                 fillProductDetailInputs(selectedProductObj)
                 /*close the list of autocompleted values,
                 (or any other open lists of autocompleted values:*/
@@ -301,18 +352,30 @@ function InventorySuggestions(arr,val,e){
   
 function fillProductDetailInputs(productArr){
     if(productArr!=null){
-        $("#InventorySaveButton").prop("disabled",false)
+        $("#ProductSaveButton").prop("disabled",false)
+        $("#mdialog").addClass("modal-lg")
         $("#restForm").removeClass("d-none")
+
         $("#InventoryIDTextBox").val(productArr.InventoryID)
         $("#ProductNameInput").val(productArr.ProductName)
         $("#ProductDescInput").val(productArr.ProductDesc)
+        $("#categorySelectBox").val(productArr.CategoryID);
+
+        $("#VariantTitleInput").val(productArr.ProductName)
     }
 }
 
 function resetProductInputs(){
-    $("#InventorySaveButton").prop("disabled",true)
+    $("#ProductSaveButton").prop("disabled",true)
+    $("#mdialog").removeClass("modal-lg")
     $("#restForm").addClass("d-none")
     $("#InventoryIDTextBox").val('')
     $("#ProductNameInput").val('')
     $("#ProductDescInput").val('')
+    $("#categorySelectBox").val('')
+    
+    $("#VariantTitleInput").val('')
+    $("#MRPInput").val('')
+    $("#PriceInput").val('')
+    $("#varientUnitSelectBox").val('')
 }

@@ -114,6 +114,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
 
   <!-- Custom JS Files -->
   <script src="custom/js/login.js"></script>

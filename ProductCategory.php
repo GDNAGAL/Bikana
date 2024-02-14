@@ -144,6 +144,7 @@
 
   <!-- Custom JS Files -->
   <script src="custom/js/ProductCategory.js"></script>
+  <script src="custom/js/functions.js"></script>
 </body>
 <script>
   // $(document).ready(function() {

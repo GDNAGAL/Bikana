@@ -145,7 +145,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" onclick="confirmsw('Are You Sure?')" href="javascript:void(0)">
+              <a class="dropdown-item d-flex align-items-center" onclick="return confirm('Are You Sure?')" href="logout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>

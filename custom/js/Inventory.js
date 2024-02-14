@@ -140,7 +140,10 @@ function setInventoryRowInTable(jsonData){
         columns: [
             { 'data': 'InventoryID' },
             { 'data': 'ProductName' },
-            { 'data': 'CategoryName' },
+            { 'data': 'CategoryName',
+              'render': function(data, type, row, meta){
+                return `<a href="ViewCategory?CategoryID=${row.CategoryID}">${data}</a>`;
+              } },
             { 'data': 'Created_By',
               'render': function(data, type, row, meta){
                 return `<a href="javascript:void(0)">${data}</a>`;

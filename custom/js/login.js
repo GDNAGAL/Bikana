@@ -10,28 +10,26 @@ $("#loginForm").on("submit",function(e){
     e.preventDefault();
     ShowLoader()
     let data = new FormData(this);
-    const requestOptions = {
-        method: 'POST',
-        body: data, 
-      };
-      
-    fetch(ApiURL +  '/userlogin', requestOptions)
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(errorResponse => {
-                throw errorResponse;
-            });
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: ApiURL + '/userlogin',
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            HideLoader()
+            document.cookie=  `Token=${responseData.Token}`; 
+            $("#message").html(`<span class="text-success fw-bold">${responseData.Message}</span>`)
+            window.location = "index";
+        },
+        error : function(err){
+            HideLoader()
+            if(err.responseJSON.Message != undefined){
+                $("#message").html(`<span class="text-danger fw-bold">${err.responseJSON.Message}</span>`) 
+            }else{
+                $("#message").html(`<span class="text-danger fw-bold">Error</span>`) 
+            }
         }
-        return response.json();
-    })
-    .then(responseData => {
-        HideLoader()
-        document.cookie=  `Token=${responseData.Token}`; 
-        $("#message").html(`<span class="text-success fw-bold">${responseData.Message}</span>`)
-        window.location = "index";
-    })
-    .catch(error => {
-        HideLoader()
-        $("#message").html(`<span class="text-danger fw-bold">${error.Message}</span>`) 
     });
 })
