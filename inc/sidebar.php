@@ -63,12 +63,17 @@ if(userpermission("CanManageProducts")){ ?>
       <span>Orders</span>
     </a>
   </li>
+
+  <?php 
+if(userpermission("CanManageUser")){ ?>
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
+    <a class="nav-link collapsed" href="Users">
       <i class="bi bi-people"></i>
       <span>CRM Users</span>
     </a>
   </li>
+<?php } ?>
+
 <?php 
 if(userpermission("CanManageUserRoles")){ ?>
 

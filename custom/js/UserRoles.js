@@ -192,9 +192,9 @@ function getPermissionList(roleid){
         }
     });
 }
-
+let rolewid;
 $(document).on("click","#roleli",function(){
-    let rolewid = $(this).attr("roleid")
+    rolewid = $(this).attr("roleid")
     roleid = $(".roleli").index(this);
     $(".roleli").removeClass("active");
     $(this).addClass("active");
@@ -208,9 +208,9 @@ $("#savePermissionButton").on("click",function(){
         permissionArr.push($(this).attr('pkey'))
     });
 
-    let data = new FormData(this);
-    data.append("Permission",permissionArr);
-    data.append("UserGroupID",roleid);
+    let data = new FormData();
+    data.append("Permission",JSON.stringify(permissionArr));
+    data.append("UserGroupID",rolewid);
 
     $.ajax({
         type: "POST",

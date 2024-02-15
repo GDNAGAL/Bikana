@@ -34,6 +34,7 @@ function getCookie(cookieName) {
 
 
     getVendorList()
+    getUserRolesList()
 
     $("#vendorEmail").on("blur", function(e) {
         e.preventDefault();
@@ -53,16 +54,16 @@ function getCookie(cookieName) {
                 cache: false,             
                 processData:false,
                 success: function(responseData){
-                    $("#VendorSaveButton").prop("disabled",false)
+                    $("#UserSaveButton").prop("disabled",false)
                     // $("#emailValidator").html(`<span class="text-success">${responseData.Message}</span>`)
                 },
                 error : function(err){
-                    $("#VendorSaveButton").prop("disabled",true)
+                    $("#UserSaveButton").prop("disabled",true)
                     $("#emailValidator").html(`<span class="text-danger">${err.responseJSON.Message}</span>`)   
                 }
             });
         }else{
-            $("#VendorSaveButton").prop("disabled",true)
+            $("#UserSaveButton").prop("disabled",true)
             $("#emailValidator").html(`<span class="text-danger">Invalid Email Address.</span>`)
         }
     })
@@ -86,20 +87,20 @@ function getCookie(cookieName) {
                 cache: false,             
                 processData:false,
                 success: function(responseData){
-                    $("#VendorSaveButton").prop("disabled",false)
+                    $("#UserSaveButton").prop("disabled",false)
                     $("#storeusername").val(mobile)
                     $("#storepassword").val(mobile)
                     // $("#emailValidator").html(`<span class="text-success">${responseData.Message}</span>`)
                 },
                 error : function(err){
-                    $("#VendorSaveButton").prop("disabled",true)
+                    $("#UserSaveButton").prop("disabled",true)
                     $("#mobileValidator").html(`<span class="text-danger">${err.responseJSON.Message}</span>`) 
                     $("#storeusername").val("")
                     $("#storepassword").val("")  
                 }
             });
         }else{
-            $("#VendorSaveButton").prop("disabled",true)
+            $("#UserSaveButton").prop("disabled",true)
             $("#mobileValidator").html(`<span class="text-danger">Invalid Mobile No.</span>`)
             $("#storeusername").val("")
             $("#storepassword").val("") 
@@ -108,7 +109,7 @@ function getCookie(cookieName) {
 
 
  $("#addVendorForm").on("submit", function(e) {
-    loadingButton("#VendorSaveButton", "Loading...")
+    loadingButton("#UserSaveButton", "Loading...")
     e.preventDefault();
     $("#message").html('')
     let data = new FormData(this);
@@ -126,7 +127,7 @@ function getCookie(cookieName) {
         success: function(responseData){
             $('#addVendorForm')[0].reset();
             $("#AddVendorModal").modal('hide')
-            loadingButton("#VendorSaveButton", "Save Changes")
+            loadingButton("#UserSaveButton", "Save Changes")
             Swal.fire({
                 title: "Success",
                 text: responseData.Message,
@@ -135,7 +136,7 @@ function getCookie(cookieName) {
             getVendorList()
         },
         error : function(err){
-            loadingButton("#VendorSaveButton", "Save Changes")
+            loadingButton("#UserSaveButton", "Save Changes")
         }
     });
   
@@ -165,12 +166,40 @@ function getVendorList(){
     });
 }
 
+function getUserRolesList(){
+    ShowLoader()
+    $.ajax({
+        type: "GET",
+        // data: data,
+        url: ApiURL + '/UserRoles/getRolesList',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            $('#userRoleSelectBox').html(`<option value="">Select User Role</option>`);
+            $.each(responseData.RolesList, function(i,Roles){
+                //User Role Should Not Store
+                if(Roles.UserRoleID!=2){
+                    $('#userRoleSelectBox').append(`<option value="${Roles.UserRoleID}">${Roles.UserGroupName}</option>`)
+                }
+            })
+            HideLoader()
+        },
+        error : function(err){
+            HideLoader()
+
+        }
+    });
+}
 
 function setVendorRowInTable(jsonData){
     // let data = localStorage.getItem("ProductCategory");
-    $('#VendorTable').DataTable().destroy();
+    $('#UserTable').DataTable().destroy();
 
-    $('#VendorTable').DataTable({
+    $('#UserTable').DataTable({
         data: jsonData.VendorList,  // Get the data object
         columns: [
             { 'data': 'VendorCode' },

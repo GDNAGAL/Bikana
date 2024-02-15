@@ -1,4 +1,9 @@
-<?php require("inc/User.php");?>
+<?php require("inc/User.php");
+ if(!userpermission("CanManageUser")){
+  header("Location: UnAuthorized");
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,11 +64,11 @@
 
           <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Vendors
-                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddVendorModal">Add New Vendor</li>
+                <h5 class="card-title">CRM Users
+                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddUserModal">Add New User</li>
                 </h5>
               <!-- Table with stripped rows -->
-              <table class="table table-hovers text-center align-middle" id="VendorTable" width="100%">
+              <table class="table table-hovers text-center align-middle" id="UserTable" width="100%">
                 <thead>
                   <tr>
                     <th scope="col">Vendor Code</th>
@@ -92,7 +97,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade hide" id="AddVendorModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal fade hide" id="AddUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -107,8 +112,8 @@
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
-                <label class="form-label" for="categorytitle">Full Name :</label>
-                <input type="text" class="form-control shadow-none" placeholder="Enter Vendor Name" name="Name" required>
+                <label class="form-label" for="categorytitle">Select User Role :</label>
+                <select id="userRoleSelectBox" class="form-control shadow-none" name="Name" required></select>
               </div>
             </div>
             <div class="col-md-6">
@@ -172,7 +177,7 @@
           <!-- Row End -->
         </div>
         <div class="modal-footer">
-          <button type="submit" id="VendorSaveButton" class="btn btn-dark float-start" >Save Changes</button>
+          <button type="submit" id="UsersaveButton" class="btn btn-dark float-start" >Save Changes</button>
         </div>
         </form>
       </div>
@@ -198,7 +203,7 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Custom JS Files -->
-  <script src="custom/js/Vendors.js"></script>
+  <script src="custom/js/Users.js"></script>
   <script src="custom/js/functions.js"></script>
 </body>
 <script>
