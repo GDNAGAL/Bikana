@@ -71,12 +71,10 @@
               <table class="table table-hovers text-center align-middle" id="UserTable" width="100%">
                 <thead>
                   <tr>
-                    <th scope="col">Vendor Code</th>
-                    <th scope="col">Vendor Name</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">UserID</th>
+                    <th scope="col">User Name</th>
                     <th scope="col">Mobile</th>
-                    <th scope="col">Created By</th>
-                    <th scope="col">Created Time</th>
+                    <th scope="col">User Role</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>

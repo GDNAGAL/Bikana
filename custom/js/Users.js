@@ -33,7 +33,7 @@ function getCookie(cookieName) {
   }
 
 
-    getVendorList()
+    getUserList()
     getUserRolesList()
 
     $("#vendorEmail").on("blur", function(e) {
@@ -133,7 +133,7 @@ function getCookie(cookieName) {
                 text: responseData.Message,
                 icon: "success",
             });
-            getVendorList()
+            getUserList()
         },
         error : function(err){
             loadingButton("#UserSaveButton", "Save Changes")
@@ -143,12 +143,12 @@ function getCookie(cookieName) {
 })
 
 
-function getVendorList(){
+function getUserList(){
     ShowLoader()
     $.ajax({
         type: "GET",
         // data: data,
-        url: ApiURL + '/Vendor/getVendorList',
+        url: ApiURL + '/User/getUserList',
         headers: {
             'Authorization': 'Bearer ' + getCookie('Token')
         },
@@ -156,7 +156,7 @@ function getVendorList(){
         cache: false,             
         processData:false,
         success: function(responseData){
-            setVendorRowInTable(responseData)
+            setUserRowInTable(responseData)
             HideLoader()
         },
         error : function(err){
@@ -195,20 +195,18 @@ function getUserRolesList(){
     });
 }
 
-function setVendorRowInTable(jsonData){
+function setUserRowInTable(jsonData){
     // let data = localStorage.getItem("ProductCategory");
     $('#UserTable').DataTable().destroy();
 
     $('#UserTable').DataTable({
-        data: jsonData.VendorList,  // Get the data object
+        data: jsonData.UserList,  // Get the data object
         columns: [
-            { 'data': 'VendorCode' },
-            { 'data': 'VendorName' },
-            { 'data': 'Email' },
+            { 'data': 'ID' },
+            { 'data': 'Name' },
             { 'data': 'Mobile' },
-            { 'data': 'Created_By' },
-            { 'data': 'Created_At' },
-            { 'data': 'VendorCode',
+            { 'data': 'UserGroupName' },
+            { 'data': 'ID',
               'render': function(data, type, row, meta){
                 return `<button class="btn btn-danger btn-sm">Delete</button>`;
               }
