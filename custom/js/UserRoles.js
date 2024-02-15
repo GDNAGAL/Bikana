@@ -31,7 +31,7 @@ function getCookie(cookieName) {
     return cookie[cookieName];
   }
 
-
+let roleid;
 
 
 
@@ -40,16 +40,16 @@ function getCookie(cookieName) {
 //Call Starting Functions
 getUserRolesList()
 
-$("#addProductForm").on("submit", function(e) {
+$("#addUserRoleForm").on("submit", function(e) {
     e.preventDefault();
-    loadingButton("#ProductSaveButton", "Saving...")
+    loadingButton("#UserRolesaveButton", "Saving...")
     $("#message").html('')
     let data = new FormData(this);
 
     $.ajax({
         type: "POST",
         data: data,
-        url: ApiURL + '/Product/addProduct',
+        url: ApiURL + '/UserRoles/addRole',
         headers: {
             'Authorization': 'Bearer ' + getCookie('Token')
         },
@@ -57,18 +57,18 @@ $("#addProductForm").on("submit", function(e) {
         cache: false,             
         processData:false,
         success: function(responseData){
-            $('#addProductForm')[0].reset();
-            $("#AddProductModal").modal('hide')
-            loadingButton("#ProductSaveButton", "Save Changes")
+            $('#addUserRoleForm')[0].reset();
+            $("#AddUserRoleModal").modal('hide')
+            loadingButton("#UserRolesaveButton", "Save Changes")
             Swal.fire({
                 title: "Success",
                 text: responseData.Message,
                 icon: "success",
             });
-            getProductList()
+            getUserRolesList()
         },
         error : function(err){
-            loadingButton("#ProductSaveButton", "Save Changes")
+            loadingButton("#UserRolesaveButton", "Save Changes")
             Swal.fire({
                 title: "Failed",
                 text: err.responseJSON.Message,
@@ -78,6 +78,44 @@ $("#addProductForm").on("submit", function(e) {
     });
 })
 
+$("#addPermissionForm").on("submit", function(e) {
+    e.preventDefault();
+    loadingButton("#addPermissionSaveButton", "Saving...")
+    $("#message").html('')
+    let data = new FormData(this);
+
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: ApiURL + '/UserRoles/addPermission',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            $('#addPermissionForm')[0].reset();
+            $("#addNewPermissionModal").modal('hide')
+            loadingButton("#addPermissionSaveButton", "Save Changes")
+            Swal.fire({
+                title: "Success",
+                text: responseData.Message,
+                icon: "success",
+            });
+            getUserRolesList()
+        },
+        error : function(err){
+            $('#addPermissionForm')[0].reset();
+            loadingButton("#addPermissionSaveButton", "Save Changes")
+            Swal.fire({
+                title: "Failed",
+                text: err.responseJSON.Message,
+                icon: "error",
+            });
+        }
+    });
+})
 
 function getUserRolesList(){
     ShowLoader()
@@ -93,14 +131,22 @@ function getUserRolesList(){
         processData:false,
         success: function(responseData){
             $('#roles').html('');
-            $.each(responseData.RolesList, function(i,Roles){
-                if(i==0){
-                    $('#roles').append(`<a href="javascript:void(0)" id="roleli" class="list-group-item list-group-item-action active roleli" roleid="${Roles.UserRoleID}">${Roles.UserGroupName}</a>`)
-                }else{
-                    $('#roles').append(`<a href="javascript:void(0)" id="roleli" class="list-group-item list-group-item-action roleli" roleid="${Roles.UserRoleID}">${Roles.UserGroupName}</a>`)
+            let activeRole = roleid;
+            let acrol;
+            $.each(responseData.RolesList, function(i, Roles) {
+                const isActive = activeRole !== undefined ? i == activeRole : i == 0;
+                const roleClass = isActive ? 'active ' : '';
+                if(isActive){
+                    acrol = Roles.UserRoleID
                 }
-            })
-            getPermissionList(responseData.RolesList[0].UserRoleID)
+                $('#roles').append(`
+                    <a href="javascript:void(0)" id="roleli" class="list-group-item list-group-item-action ${roleClass}roleli" roleid="${Roles.UserRoleID}">
+                        ${Roles.UserGroupName}
+                    </a>
+                `);
+            });
+            
+            getPermissionList((acrol !== undefined) ? acrol : responseData.RolesList[0].UserRoleID)
             HideLoader()
         },
         error : function(err){
@@ -132,9 +178,9 @@ function getPermissionList(roleid){
                 $("#savePermissionButton").removeClass("d-none")
                 $.each(responseData.PermissionList, function(i,Permission){
                     if(Permission.isAllowed){
-                        $('#permissions').append(`<tr><td class="text-center"><input class="form-check-input shadow-none" type="checkbox" checked/></td><td>${Permission.PermissionText}</td></tr>`)
+                        $('#permissions').append(`<tr><td class="text-center"><input id="permissionCheckBox" class="form-check-input shadow-none" type="checkbox" pkey="${Permission.PermissionID}" ugid="${roleid}" checked/></td><td>${Permission.PermissionText}</td></tr>`)
                     }else{
-                        $('#permissions').append(`<tr><td class="text-center"><input class="form-check-input shadow-none" type="checkbox"/></td><td>${Permission.PermissionText}</td></tr>`)
+                        $('#permissions').append(`<tr><td class="text-center"><input id="permissionCheckBox" class="form-check-input shadow-none" type="checkbox" pkey="${Permission.PermissionID}" ugid="${roleid}" /></td><td>${Permission.PermissionText}</td></tr>`)
                     }
                 })
             }
@@ -148,9 +194,49 @@ function getPermissionList(roleid){
 }
 
 $(document).on("click","#roleli",function(){
-    let roleid = $(this).attr("roleid")
+    let rolewid = $(this).attr("roleid")
+    roleid = $(".roleli").index(this);
     $(".roleli").removeClass("active");
     $(this).addClass("active");
-    getPermissionList(roleid)
+    getPermissionList(rolewid)
     
+})
+
+$("#savePermissionButton").on("click",function(){
+    let permissionArr = [];
+    $('#permissionCheckBox:checked').each(function () {
+        permissionArr.push($(this).attr('pkey'))
+    });
+
+    let data = new FormData(this);
+    data.append("Permission",permissionArr);
+    data.append("UserGroupID",roleid);
+
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: ApiURL + '/UserRoles/updatePermission',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            Swal.fire({
+                title: "Success",
+                text: responseData.Message,
+                icon: "success",
+            });
+            getUserRolesList()
+        },
+        error : function(err){
+            loadingButton("#addPermissionSaveButton", "Save Changes")
+            Swal.fire({
+                title: "Failed",
+                text: err.responseJSON.Message,
+                icon: "error",
+            });
+        }
+    });
 })

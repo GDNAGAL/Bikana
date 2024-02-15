@@ -43,7 +43,10 @@
     background-color: DodgerBlue !important; 
     color: #ffffff; 
   }
-
+  .list-group-item.active{
+    background-color: #37568c !important;
+    border-color: #37568c !important;
+  }
 
 #MRPCheckBox
 {

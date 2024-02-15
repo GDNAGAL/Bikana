@@ -64,7 +64,7 @@
           <div class="card">
             <div class="card-body">
                 <h5 class="card-title border-bottom pb-4">User Roles 
-                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add New User Role</li>
+                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddUserRoleModal">Add New User Role</li>
                 </h5>
                 <div class="list-group" id="roles"></div>
             </div>
@@ -76,10 +76,11 @@
           <div class="card">
             <div class="card-body">
                 <h5 class="card-title">User Role Permissions 
-                  <li class="btn btn-success float-end d-none" id="savePermissionButton">Save Permissions</li>
+                  <li class="btn btn-success float-end d-none ms-2" id="savePermissionButton">Save Permissions</li>
+                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#addNewPermissionModal" id="addNewPermission">Add New Permissions</li>
                 </h5>
                 <div>
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="corner-radius:5px">
                   <tr>
                     <th class="text-center">Status</th>
                     <th>Permission Name</th>
@@ -100,97 +101,64 @@
 
 
     <!-- Modal -->
-    <div class="modal fade hide" id="AddProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal fade hide" id="AddUserRoleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog" id="mdialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add User Roles</h5>
           <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form class="" id="addProductForm" autocomplete="off">
+        <form class="" id="addUserRoleForm" autocomplete="off">
         <div class="modal-body">
           <span id="message"></span>
           <div class="row">
             <div class="" id="sdiv">
               <div class="mb-3 autocomplete">
-                <label class="form-label" for="categorytitle">Search Product :</label>
-                <input type="text" class="form-control shadow-none" id="SearchInventoryTextBox" placeholder="Search Product In Inventory" name="InventoryName" required>
-                <input type="hidden" class="form-control shadow-none" id="InventoryIDTextBox"  name="InventoryID" required>
+                <label class="form-label" for="categorytitle">User Role Name :</label>
+                <input type="text" class="form-control shadow-none" id="SearchInventoryTextBox" placeholder="Enter User Role Name" name="UserRoleName" required>
               </div>
             </div>
             <!-- <div class="col-md-6"></div> -->
           </div>
-          <div class="d-none" id="restForm">
-            <h6 class="fw-bold">Vendor Detail </h6>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label" for="categorytitle">Product Name :</label>
-                  <input type="text" class="form-control shadow-none" id="ProductNameInput" placeholder="Enter Product Name" name="ProductName" required>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label" for="CategoryDescription">Product Description :</label>
-                  <textarea type="text" class="form-control shadow-none" id="ProductDescInput" rows="1" placeholder="Enter Description" name="ProductDesc" required></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label" for="categorytitle">Product Category :</label>
-                  <select class="form-control shadow-none" id="categorySelectBox" name="CategoryID" required></select>
-                </div>
-              </div>
-              <div class="col-md-6">
-
-              </div>
-            </div>
-            <h6 class="fw-bold">Add Variant </h6>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label" for="categorytitle">Variant Title :</label>
-                  <input type="text" class="form-control shadow-none" id="VariantTitleInput" placeholder="Enter Variant Name" name="VariantTitle" required>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label" for="categorytitle">Select UNIT :</label>
-                  <select class="form-control shadow-none" id="varientUnitSelectBox" name="UnitID" required></select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label" for="categorytitle">MRP :</label>
-                  <input type="number" class="form-control shadow-none" id="MRPInput" placeholder="Enter MRP" name="MRP" required>
-                  <li style="list-style-type: none;">
-                    <input id="MRPCheckBox"  type="checkbox" checked/>
-                    <label for="MRPCheckBox"  style="word-wrap:break-word">MRP and Price Are Same</label>
-                  </li>
-                  <!-- <input type="checkbox" class="shadow-none" id="MRPCheckBox"><label class="form-label" for="MRPCheckBox">MRP and Price Are Same</label> -->
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label" for="categorytitle">Price :</label>
-                  <input type="number" class="form-control shadow-none" id="PriceInput" placeholder="Enter Price" name="Price" required>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" id="UserRolesaveButton" class="btn btn-dark float-start" disabled>Save Changes</button>
+          <button type="submit" id="UserRolesaveButton" class="btn btn-dark float-start">Save Changes</button>
         </div>
         </form>
       </div>
     </div>
   </div>
 
+     <!-- Modal -->
+    <div class="modal fade hide" id="addNewPermissionModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog" id="mdialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Permission</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="" id="addPermissionForm" autocomplete="off">
+        <div class="modal-body">
+          <span id="message"></span>
+          <div class="row">
+              <div class="mb-3 autocomplete">
+                <label class="form-label" for="categorytitle">Permission Key <span style="font-size:12px">(Without Space)</span> :</label>
+                <input type="text" class="form-control shadow-none" id="permissionKeyInput" placeholder="Permission Key Name Without Space" name="PermissionKey" required>
+              </div>
+              <div class="mb-3 autocomplete">
+                <label class="form-label" for="categorytitle">Permission Description :</label>
+                <input type="text" class="form-control shadow-none" placeholder="Enter User Role Name" name="PermissionText" required>
+              </div>
+            <!-- <div class="col-md-6"></div> -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="addPermissionSaveButton" class="btn btn-dark float-start">Save Changes</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
