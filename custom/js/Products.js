@@ -194,7 +194,7 @@ function setProductRowInTable(jsonData){
             { 'data': 'Created_At' },
             { 'data': 'ProductID',
               'render': function(data, type, row, meta){
-                return `<a href="ManageVariants?ProductID=${row.ProductID}"><button class="btn btn-dark btn-sm">Manage Variants</button></a>`;
+                return `<a href="ManageVariants?ProductID=${row.ProductID}"><button class="btn btn-dark btn-sm">Manage</button></a>`;
               }
             },
         ]
