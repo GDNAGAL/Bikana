@@ -36,7 +36,7 @@ function getCookie(cookieName) {
     getUserList()
     getUserRolesList()
 
-    $("#vendorEmail").on("blur", function(e) {
+    $("#userEmail").on("blur", function(e) {
         e.preventDefault();
         $("#emailValidator").html('')
         if(ValidateEmail($(this).val())){
@@ -68,7 +68,7 @@ function getCookie(cookieName) {
         }
     })
 
-    $("#vendorMobile").on("blur", function(e) {
+    $("#userMobile").on("blur", function(e) {
         e.preventDefault();
         $("#mobileValidator").html('')
         let mobile = $(this).val().trim();
@@ -88,27 +88,21 @@ function getCookie(cookieName) {
                 processData:false,
                 success: function(responseData){
                     $("#UserSaveButton").prop("disabled",false)
-                    $("#storeusername").val(mobile)
-                    $("#storepassword").val(mobile)
                     // $("#emailValidator").html(`<span class="text-success">${responseData.Message}</span>`)
                 },
                 error : function(err){
-                    $("#UserSaveButton").prop("disabled",true)
+                    $("#UsersaveButton").prop("disabled",true)
                     $("#mobileValidator").html(`<span class="text-danger">${err.responseJSON.Message}</span>`) 
-                    $("#storeusername").val("")
-                    $("#storepassword").val("")  
                 }
             });
         }else{
             $("#UserSaveButton").prop("disabled",true)
             $("#mobileValidator").html(`<span class="text-danger">Invalid Mobile No.</span>`)
-            $("#storeusername").val("")
-            $("#storepassword").val("") 
         }
     })
 
 
- $("#addVendorForm").on("submit", function(e) {
+ $("#addUserForm").on("submit", function(e) {
     loadingButton("#UserSaveButton", "Loading...")
     e.preventDefault();
     $("#message").html('')
@@ -117,7 +111,7 @@ function getCookie(cookieName) {
     $.ajax({
         type: "POST",
         data: data,
-        url: ApiURL + '/Vendor/addVendor',
+        url: ApiURL + '/User/addUser',
         headers: {
             'Authorization': 'Bearer ' + getCookie('Token')
         },
@@ -125,8 +119,8 @@ function getCookie(cookieName) {
         cache: false,             
         processData:false,
         success: function(responseData){
-            $('#addVendorForm')[0].reset();
-            $("#AddVendorModal").modal('hide')
+            $('#addUserForm')[0].reset();
+            $("#AddUserModal").modal('hide')
             loadingButton("#UserSaveButton", "Save Changes")
             Swal.fire({
                 title: "Success",
@@ -208,7 +202,7 @@ function setUserRowInTable(jsonData){
             { 'data': 'UserGroupName' },
             { 'data': 'ID',
               'render': function(data, type, row, meta){
-                return `<button class="btn btn-danger btn-sm">Delete</button>`;
+                return `<a href="UserView?UserID=${row.ID}"><button class="btn btn-dark btn-sm">View</button></a>`;
               }
             },
         ]

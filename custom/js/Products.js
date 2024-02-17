@@ -151,7 +151,7 @@ function getUNITList(){
         success: function(responseData){
             $('#varientUnitSelectBox').html(`<option value="">Select UNIT</option>`);
             $.each(responseData.UNITList, function(i,Unit){
-                $('#varientUnitSelectBox').append(`<option value="${Unit.UnitID}">${Unit.UnitText}</option>`)
+                $('#varientUnitSelectBox').append(`<option value="${Unit.UNITID}">${Unit.UnitText}</option>`)
             })
             HideLoader()
         },
@@ -194,7 +194,7 @@ function setProductRowInTable(jsonData){
             { 'data': 'Created_At' },
             { 'data': 'ProductID',
               'render': function(data, type, row, meta){
-                return `<button class="btn btn-danger btn-sm">Delete</button>`;
+                return `<a href="ManageVariants?ProductID=${row.ProductID}"><button class="btn btn-dark btn-sm">Manage Variants</button></a>`;
               }
             },
         ]
