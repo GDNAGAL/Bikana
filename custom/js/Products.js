@@ -361,7 +361,7 @@ function fillProductDetailInputs(productArr){
         $("#ProductDescInput").val(productArr.ProductDesc)
         $("#categorySelectBox").val(productArr.CategoryID);
 
-        $("#VariantTitleInput").val(productArr.ProductName)
+        $("#VariantTitleInput").val(productArr.ProductTitle)
     }
 }
 

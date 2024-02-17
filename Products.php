@@ -121,7 +121,7 @@
               <div class="col-md-6">
                 <div class="mb-3">
                   <label class="form-label" for="categorytitle">Product Name :</label>
-                  <input type="text" class="form-control shadow-none" id="ProductNameInput" placeholder="Enter Product Name" name="ProductName" required>
+                  <input type="text" class="form-control shadow-none" id="ProductNameInput" placeholder="Enter Product Name" name="ProductName" readonly required>
                 </div>
               </div>
               <div class="col-md-6">

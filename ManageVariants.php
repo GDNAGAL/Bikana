@@ -90,7 +90,7 @@
                 <thead>
                   <tr>
                     <th scope="col">Pin Variant</th>
-                    <th scope="col">Vriant Code</th>
+                    <!-- <th scope="col">Vriant Code</th> -->
                     <th scope="col">Variant Title</th>
                     <th scope="col">MRP</th>
                     <th scope="col">Price</th>

@@ -69,7 +69,7 @@ $("#addVariantForm").on("submit", function(e) {
                 text: responseData.Message,
                 icon: "success",
             });
-            getProductList()
+            getVariantList()
         },
         error : function(err){
             loadingButton("#VariantSaveButton", "Save Changes")
@@ -187,12 +187,47 @@ function setVariantInTable(jsonData){
 
         $('#variantTable').append(`<tr>
         <td><input type="radio" id="pinvariantCheckbox" name="PinVariant" value="${Variant.ID}" ${pinned}/></td>
-        <td>${Variant.ID}</td>
         <td>${Variant.VariantTitle}</td>
-        <td>${Variant.MRP}</td>
-        <td>${Variant.Price}</td>
-        <td>${Variant.AvailableQuantity==null?"" : Variant.AvailableQuantity}</td>
+        <td>₹ ${Variant.MRP}/${Variant.UnitText}</td>
+        <td>₹ ${Variant.Price}/${Variant.UnitText}</td>
+        <td>${Variant.AvailableQuantity==null?"" : Variant.AvailableQuantity +" "+ Variant.UnitText}</td>
         <td><button class="btn btn-dark btn-sm">EDIT</button></td>
         </tr>`)
     })
 }
+
+$(document).on("change","#pinvariantCheckbox",function(e){
+    ShowLoader()
+    e.preventDefault();
+    let data = new FormData();
+    data.append("VariantID",this.value)
+    data.append("ProductID",ProductID)
+
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: ApiURL + '/Product/pinVariant',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            ShowLoader()
+            Swal.fire({
+                title: "Success",
+                text: responseData.Message,
+                icon: "success",
+            });
+            getProductList()
+        },
+        error : function(err){
+            Swal.fire({
+                title: "Failed",
+                text: err.responseJSON.Message,
+                icon: "error",
+            });
+        }
+    });
+})

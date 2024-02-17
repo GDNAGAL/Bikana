@@ -102,12 +102,16 @@
         <div class="modal-body">
           <span id="message"></span>
             <div class="mb-3">
+              <label class="form-label" for="categorytitle">Product Name :</label>
+              <input type="text" class="form-control shadow-none" placeholder="Enter Product Name" name="ProductName" required>
+            </div>
+            <div class="mb-3">
               <label class="form-label" for="categorytitle">Product Title :</label>
-              <input type="text" class="form-control shadow-none" id="categorytitle" placeholder="Enter Product Category Title" name="ProductName" required>
+              <input type="text" class="form-control shadow-none" placeholder="Enter Product Title" name="ProductTitle" required>
             </div>
             <div class="mb-3">
               <label class="form-label" for="CategoryDescription">Product Description :</label>
-              <textarea type="text" class="form-control shadow-none" id="CategoryDescription" rows="4" placeholder="Enter Description" name="ProductDesc" required></textarea>
+              <textarea type="text" class="form-control shadow-none"  rows="4" placeholder="Enter Description" name="ProductDesc" required></textarea>
             </div>
             <div class="mb-3">
               <label class="form-label" for="categorytitle">Product Category :</label>
