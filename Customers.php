@@ -109,8 +109,12 @@
         <h6 class="fw-bold">Customer Detail </h6>
           <span id="message"></span>
               <div class="mb-2">
-                <label class="form-label" for="categorytitle">Full Name :</label>
-                <input type="text" class="form-control shadow-none" placeholder="Enter Customer Name" name="Name" required>
+                <label class="form-label" for="categorytitle">First Name :</label>
+                <input type="text" class="form-control shadow-none" placeholder="Enter First Name" name="FirstName" required>
+              </div>
+              <div class="mb-2">
+                <label class="form-label" for="categorytitle">Last Name :</label>
+                <input type="text" class="form-control shadow-none" placeholder="Enter Last Name" name="LastName" required>
               </div>
               <div class="mb-2">
                 <label class="form-label" for="categorytitle">Email :</label>
@@ -124,16 +128,16 @@
               <h6 class="fw-bold">Address </h6>
               <div class="mb-2">
                 <label class="form-label" for="categorytitle">Address Line 1 :</label>
-                <input type="text" class="form-control shadow-none" placeholder="Address Line 1" name="StoreName" required>
+                <input type="text" class="form-control shadow-none" placeholder="Address Line 1" name="AddressLine1" required>
               </div>
               <div class="mb-2">
                 <label class="form-label" for="categorytitle">Address Line 1 :</label>
-                <input type="text" class="form-control shadow-none" placeholder="Address Line 2" name="StoreAddress" required>
+                <input type="text" class="form-control shadow-none" placeholder="Address Line 2" name="AddressLine2" required>
               </div>
             
               <div class="mb-2">
                 <label class="form-label" for="categorytitle">Select Area :</label>
-                <select class="form-control shadow-none" id="storeusername" name="StoreUserName" required></select>
+                <select class="form-control shadow-none" id="AreaIDSelectBox" name="AreaID" required></select>
               </div>
         </div>
         <div class="modal-footer">
@@ -168,7 +172,7 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Custom JS Files -->
-  <script src="custom/js/Vendors.js"></script>
+  <script src="custom/js/Customers.js"></script>
   <script src="custom/js/functions.js"></script>
 </body>
 <script>
