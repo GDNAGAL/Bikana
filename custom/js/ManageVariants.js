@@ -41,7 +41,7 @@ function getCookie(cookieName) {
 
 //Call Starting Functions
 getProductList()
-getUNITList()
+// getUNITList()
 
 $("#addVariantForm").on("submit", function(e) {
     e.preventDefault();
@@ -107,7 +107,6 @@ function getProductList(){
             }else{
                 window.location = "Products";
             }
-            HideLoader()
         },
         error : function(err){
             HideLoader()
@@ -130,6 +129,7 @@ function getVariantList(){
         processData:false,
         success: function(responseData){
             setVariantInTable(responseData)
+            getUNITList()
             HideLoader()
         },
         error : function(err){
@@ -180,15 +180,31 @@ $("#MRPInput").on("keyup",function(){
 })
 
 function setVariantInTable(jsonData){
+    const currentDateTime = new Date();
+    const currentMinutes = currentDateTime.getHours() * 60 + currentDateTime.getMinutes();
+    const targetTimeInMinutes = 11 * 60;
+
+    
     let pinned;
     $('#variantTable').html("")
     $.each(jsonData.VariantList, function(i,Variant){
+        let sign;
+        const lastModifiedHoures = Math.floor((currentDateTime - (new Date(Variant.Modified_At))) / (1000 * 60 * 60))
+        if (currentMinutes > targetTimeInMinutes) {
+            if(lastModifiedHoures>20 || isNaN(lastModifiedHoures)){
+               sign = `<i class="bi bi-record-btn text-danger"></i>`;
+            }else{
+                sign = `<i class="bi bi-record-btn text-success"></i>`;
+            }
+        }
+
         let pinned = (pinV == Variant.ID)? "checked" : "";
 
         $('#variantTable').append(`<tr>
         <td><input type="radio" id="pinvariantCheckbox" name="PinVariant" value="${Variant.ID}" ${pinned}/></td>
         <td>${Variant.VariantTitle}</td>
-        <td>₹ ${Variant.MRP}/${Variant.UnitText}</td>
+        <td>${sign}</td>
+        <td>₹ ${Variant.MRP}/${Variant.UnitText} <a href="javascript:void(0)" variantidInput="${Variant.ID}" mrp="${Variant.MRP}" price="${Variant.Price}" ptitle="${Variant.VariantTitle}" id="updateMRP"><i class="bi bi-pencil-square"></i></a></td>
         <td>₹ ${Variant.Price}/${Variant.UnitText}</td>
         <td>${Variant.AvailableQuantity==null?"" : Variant.AvailableQuantity +" "+ Variant.UnitText}</td>
         <td><button class="btn btn-dark btn-sm">EDIT</button></td>
@@ -223,6 +239,54 @@ $(document).on("change","#pinvariantCheckbox",function(e){
             getProductList()
         },
         error : function(err){
+            Swal.fire({
+                title: "Failed",
+                text: err.responseJSON.Message,
+                icon: "error",
+            });
+        }
+    });
+})
+
+$(document).on("click","#updateMRP",function(){
+    $("#updateMRPModal").modal("show");
+    
+    $("#uMRPInput").val($(this).attr("mrp"))
+    $("#uPriceInput").val($(this).attr("price"))
+    $("#ptitle").html($(this).attr("ptitle"))
+    $("#variantidInput").val($(this).attr("variantidinput"))
+})
+
+$("#updatePriceForm").on("submit", function(e) {
+    e.preventDefault();
+    loadingButton("#VariantUpdateButton", "Saving...")
+    $("#message").html('')
+    let data = new FormData(this);
+    data.append("ProductID",ProductID)
+
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: ApiURL + '/Product/updateVariantPrice',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            $('#updatePriceForm')[0].reset();
+            $("#updateMRPModal").modal('hide')
+            loadingButton("#VariantUpdateButton", "Save Changes")
+            Swal.fire({
+                title: "Success",
+                text: responseData.Message,
+                icon: "success",
+            });
+            getVariantList()
+        },
+        error : function(err){
+            loadingButton("#VariantUpdateButton", "Save Changes")
             Swal.fire({
                 title: "Failed",
                 text: err.responseJSON.Message,

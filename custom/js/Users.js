@@ -195,6 +195,7 @@ function setUserRowInTable(jsonData){
 
     $('#UserTable').DataTable({
         data: jsonData.UserList,  // Get the data object
+        responsive: true,
         columns: [
             { 'data': 'ID' },
             { 'data': 'Name' },

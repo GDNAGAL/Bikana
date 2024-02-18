@@ -172,6 +172,7 @@ function setVendorRowInTable(jsonData){
 
     $('#VendorTable').DataTable({
         data: jsonData.VendorList,  // Get the data object
+        responsive: true,
         columns: [
             { 'data': 'VendorCode' },
             { 'data': 'VendorName' },

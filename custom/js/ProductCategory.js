@@ -104,6 +104,7 @@ function setCategoryRowInTable(jsonData){
 
     $('#productCategoryTable').DataTable({
         data: jsonData.ProductCategoryList,  // Get the data object
+        responsive: true,
         columns: [
             { 'data': 'CategoryID' },
             {

@@ -182,6 +182,7 @@ function setProductRowInTable(jsonData){
 
     $('#productTable').DataTable({
         data: jsonData.ProductList,  // Get the data object
+        responsive: true,
         columns: [
             { 'data': 'ProductID' },
             { 'data': 'ProductName' },

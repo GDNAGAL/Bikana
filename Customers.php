@@ -1,9 +1,4 @@
-<?php require("inc/User.php");
-  if(!userpermission("CanManageInventory")){
-    header("Location: UnAuthorized");
-    exit;
-  }
-?>
+<?php require("inc/User.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +26,7 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
 
   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.bootstrap.min.css">
@@ -68,17 +64,18 @@
 
           <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Product Inventory 
-                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddInventoryModal">Add Inventory</li>
+                <h5 class="card-title">Customers
+                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddCustomerModal">Add New Customer</li>
                 </h5>
               <!-- Table with stripped rows -->
-              <table class="table table-hovers text-center align-middle" id="inventoryTable" width="100%">
+              <table class="table table-hovers text-center align-middle" id="VendorTable" width="100%">
                 <thead>
                   <tr>
-                    <th scope="col">Code</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Product Category</th>
-                    <th scope="col">Created By</th>
+                    <th scope="col">CustomerID</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Whatsapp Mobile</th>
                     <th scope="col">Created Time</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -100,37 +97,47 @@
 
 
     <!-- Modal -->
-    <div class="modal fade hide" id="AddInventoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal fade hide" id="AddCustomerModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Inventory</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
           <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form class="" id="addInventoryForm" autocomplete="off">
+        <form class="" id="addCustomerForm" autocomplete="off">
         <div class="modal-body">
+        <h6 class="fw-bold">Customer Detail </h6>
           <span id="message"></span>
-            <div class="mb-3">
-              <label class="form-label" for="categorytitle">Product Name :</label>
-              <input type="text" class="form-control shadow-none" placeholder="Enter Product Name" name="ProductName" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="categorytitle">Product Title :</label>
-              <input type="text" class="form-control shadow-none" placeholder="Enter Product Title" name="ProductTitle" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="CategoryDescription">Product Description :</label>
-              <textarea type="text" class="form-control shadow-none"  rows="4" placeholder="Enter Description" name="ProductDesc" required></textarea>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="categorytitle">Product Category :</label>
-              <select class="form-control shadow-none" id="categorySelectBox" name="CategoryID" required>
-                
-              </select>
-            </div>
-          </div>
+              <div class="mb-2">
+                <label class="form-label" for="categorytitle">Full Name :</label>
+                <input type="text" class="form-control shadow-none" placeholder="Enter Customer Name" name="Name" required>
+              </div>
+              <div class="mb-2">
+                <label class="form-label" for="categorytitle">Email :</label>
+                <input type="email" class="form-control shadow-none" id="vendorEmail" placeholder="Enter Email Address" name="Email" required>
+              </div>
+              <div class="mb-2">
+                <label class="form-label" for="categorytitle">Mobile No. :</label>
+                <input type="text" class="form-control shadow-none" id="vendorMobile" placeholder="Enter Mobile No." name="Mobile" required>
+                <!-- <span class="ps-1" style="font-size:12px" id="mobileValidator"></span> -->
+              </div>
+              <h6 class="fw-bold">Address </h6>
+              <div class="mb-2">
+                <label class="form-label" for="categorytitle">Address Line 1 :</label>
+                <input type="text" class="form-control shadow-none" placeholder="Address Line 1" name="StoreName" required>
+              </div>
+              <div class="mb-2">
+                <label class="form-label" for="categorytitle">Address Line 1 :</label>
+                <input type="text" class="form-control shadow-none" placeholder="Address Line 2" name="StoreAddress" required>
+              </div>
+            
+              <div class="mb-2">
+                <label class="form-label" for="categorytitle">Select Area :</label>
+                <select class="form-control shadow-none" id="storeusername" name="StoreUserName" required></select>
+              </div>
+        </div>
         <div class="modal-footer">
-          <button type="submit" id="InventorySaveButton" class="btn btn-dark float-start" >Save Changes</button>
+          <button type="submit" id="CustomerSaveButton" class="btn btn-dark float-start" >Save Changes</button>
         </div>
         </form>
       </div>
@@ -152,7 +159,7 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  
+
   <script src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap.min.js"></script>
@@ -161,8 +168,12 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Custom JS Files -->
-  <script src="custom/js/Inventory.js"></script>
+  <script src="custom/js/Vendors.js"></script>
   <script src="custom/js/functions.js"></script>
 </body>
-
+<script>
+  // $(document).ready(function() {
+  //   $("#productCategoryTable").DataTable();
+  // });
+</script>
 </html>

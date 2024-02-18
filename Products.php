@@ -32,6 +32,10 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap.min.css">
+
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -64,7 +68,10 @@
           <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Products 
-                  <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add New Product</li>
+                  <?php 
+                  if($UserGroupID==2){ ?>
+                    <li class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add New Product</li>
+                  <?php  } ?>
                 </h5>
               <!-- Table with stripped rows -->
               <table class="table table-hovers text-center align-middle" id="productTable" width="100%">
@@ -200,6 +207,11 @@
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  <script src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

@@ -18,7 +18,7 @@
     <?php 
     if($AppMode != "PRODUCTION"){
       ?>
-        <div class="bg-danger text-white p-2 fw-bold ps-2 pe-2">Test Environment</div>
+        <div class="bg-danger float-center text-white p-1s fw-bold ps-2 pe-2 rounded-pill">Test Environment</div>
       <?php
     }
     ?>

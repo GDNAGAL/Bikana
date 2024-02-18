@@ -137,6 +137,7 @@ function setInventoryRowInTable(jsonData){
 
     $('#inventoryTable').DataTable({
         data: jsonData.InventoryList,  // Get the data object
+        responsive: true,
         columns: [
             { 'data': 'InventoryID' },
             { 'data': 'ProductName' },

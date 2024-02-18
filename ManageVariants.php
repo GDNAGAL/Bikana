@@ -36,6 +36,10 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap.min.css">
+
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -67,13 +71,13 @@
 
           <div class="card">
             <div class="card-body">
-                <div class="row">
+                <div class="row mt-2">
                   <div class="col-md-6">
-                    <h5 class="card-title mb-0 pb-0"><span style="font-size:16px">Product Name : </span> <h4 id="Pname"></h4></h5>
+                    <h5 class="card-title mb-0 mt-0 pt-0 pb-0"><span style="font-size:16px">Product Name : </span> <h4 id="Pname"></h4></h5>
                     <h5 class="card-title mb-0 pt-0 pb-0"><span style="font-size:16px">Product Category : </span> <h4 id="PCate"></h4></h5>
                   </div>
                   <div class="col-md-6">
-                    <h5 class="card-title mb-0 pb-0"><span style="font-size:16px">Store Name : </span> <h4 id="Storename"></h4></h5>
+                    <h5 class="card-title mb-0 pb-0 mt-0 pt-0"><span style="font-size:16px">Store Name : </span> <h4 id="Storename"></h4></h5>
                     <!-- <h5 class="card-title mb-0 pt-0 pb-0"><span style="font-size:16px">Pin Variant : </span> <select class="form-control shadow-none" id="PCate">
                       <option value="">1st</option>
                     </select></h5> -->
@@ -84,25 +88,30 @@
 
           <div class="card">
             <div class="card-body">
+              <?php if($UserGroupID==2){ ?>
                 <h5 class="card-title" id="ProductName"></h5>
+              <?php } ?>
               <!-- Table with stripped rows -->
-              <table class="table table-hovers text-center align-middle" width="100%">
-                <thead>
-                  <tr>
-                    <th scope="col">Pin Variant</th>
-                    <!-- <th scope="col">Vriant Code</th> -->
-                    <th scope="col">Variant Title</th>
-                    <th scope="col">MRP</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Available Qty.</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="variantTable">
-                 
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+              <div class="table-responsive">
+                <table class="table table-hovers text-center align-middle" width="100%">
+                  <thead>
+                    <tr>
+                      <th scope="col">Pin Variant</th>
+                      <!-- <th scope="col">Vriant Code</th> -->
+                      <th scope="col">Variant Title</th>
+                      <th scope="col"></th>
+                      <th scope="col">MRP</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Available Qty.</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="variantTable">
+                  
+                  </tbody>
+                </table>
+                <!-- End Table with stripped rows -->
+              </div>
 
             </div>
           </div>
@@ -115,7 +124,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade hide" id="AddVariantModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal fade hide" id="AddVariantModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-lg" id="mdialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -174,6 +183,49 @@
   </div>
 
 
+    <!-- Modal -->
+    <div class="modal fade hide" id="updateMRPModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog" id="mdialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update MRP and Price</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="" id="updatePriceForm" autocomplete="off">
+        <div class="modal-body">
+          <span id="message"></span>
+          <div>
+            <h5 id="ptitle"></h5> 
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label" for="categorytitle">MRP :</label>
+                  <input type="number" class="form-control shadow-none" id="uMRPInput" placeholder="Enter MRP" name="MRP" required>
+                  <input type="hidden" class="form-control shadow-none" id="variantidInput" name="VariantID" required>
+                  <!-- <li style="list-style-type: none;">
+                    <input id="uMRPCheckBox"  type="checkbox" checked/>
+                    <label for="MRPCheckBox"  style="word-wrap:break-word">MRP and Price Are Same</label>
+                  </li> -->
+                  <!-- <input type="checkbox" class="shadow-none" id="MRPCheckBox"><label class="form-label" for="MRPCheckBox">MRP and Price Are Same</label> -->
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label" for="categorytitle">Price :</label>
+                  <input type="number" class="form-control shadow-none" id="uPriceInput" placeholder="Enter Price" name="Price" required>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="VariantUpdateButton" class="btn btn-dark float-start">Save Changes</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
@@ -187,6 +239,11 @@
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  
+  <script src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

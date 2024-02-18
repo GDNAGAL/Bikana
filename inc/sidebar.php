@@ -10,31 +10,32 @@
   </li><!-- End Dashboard Nav -->
 
   <!-- <li class="nav-heading">Pages</li> -->
-<?php 
-if(userpermission("CanManageProducts")){ ?>
-  
+<?php if(userpermission("CanManageProducts")){ ?>
   <li class="nav-item">
     <a class="nav-link collapsed" href="Products">
       <i class="bi bi-list-ul"></i>
       <span>Products</span>
     </a>
   </li>
-
 <?php } ?>
 
+<?php if(userpermission("CanManageInventory")){ ?>
   <li class="nav-item">
     <a class="nav-link collapsed" href="Inventory">
       <i class="bi bi-list-ul"></i>
       <span>Inventory</span>
     </a>
   </li>
+<?php } ?>
 
+<?php if(userpermission("CanManageCategory")){ ?>
   <li class="nav-item">
     <a class="nav-link collapsed" href="ProductCategory">
       <i class="bi bi-tag"></i>
       <span>Category</span>
     </a>
   </li>
+<?php } ?>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="Vendors">
@@ -51,7 +52,7 @@ if(userpermission("CanManageProducts")){ ?>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-error-404.html">
+    <a class="nav-link collapsed" href="Customers">
       <i class="bi bi-person"></i>
       <span>Customers</span>
     </a>
