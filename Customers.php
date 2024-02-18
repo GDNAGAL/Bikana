@@ -106,7 +106,7 @@
         </div>
         <form class="" id="addCustomerForm" autocomplete="off">
         <div class="modal-body">
-        <h6 class="fw-bold">Customer Detail </h6>
+        <!-- <h6 class="fw-bold">Customer Detail </h6> -->
           <span id="message"></span>
               <div class="mb-2">
                 <label class="form-label" for="categorytitle">First Name :</label>
