@@ -59,7 +59,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
+    <a class="nav-link collapsed" href="AddOrder">
       <i class="bi bi-cart-check"></i>
       <span>Orders</span>
     </a>

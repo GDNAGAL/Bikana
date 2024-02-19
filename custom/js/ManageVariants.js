@@ -196,6 +196,8 @@ function setVariantInTable(jsonData){
             }else{
                 sign = `<i class="bi bi-record-btn text-success"></i>`;
             }
+        }else{
+            sign = `<i class="bi bi-record-btn text-success"></i>`;
         }
 
         let pinned = (pinV == Variant.ID)? "checked" : "";

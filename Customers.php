@@ -71,7 +71,7 @@
               <table class="table table-hovers text-center align-middle" id="VendorTable" width="100%">
                 <thead>
                   <tr>
-                    <th scope="col">CustomerID</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Customer Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Mobile</th>

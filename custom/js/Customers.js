@@ -60,7 +60,7 @@ $("#addCustomerForm").on("submit", function(e) {
                 text: responseData.Message,
                 icon: "success",
             });
-            getVendorList()
+            getCustomersList()
         },
         error : function(err){
             loadingButton("#CustomerSaveButton", "Save Changes")
@@ -83,6 +83,7 @@ function getCustomersList(){
         processData:false,
         success: function(responseData){
             setCustomerRowInTable(responseData)
+            getAreaList()
             HideLoader()
         },
         error : function(err){
@@ -98,20 +99,50 @@ function setCustomerRowInTable(jsonData){
     $('#VendorTable').DataTable().destroy();
 
     $('#VendorTable').DataTable({
-        data: jsonData.VendorList,  // Get the data object
+        data: jsonData.CustomerList,  // Get the data object
         responsive: true,
         columns: [
-            { 'data': 'VendorCode' },
-            { 'data': 'VendorName' },
+            { 'data': 'ID' },
+            { 'data': 'FirstName',
+              'render' : function(data, type, row, meta){
+                return `${row.FirstName} ${row.LastName}`;
+              } 
+            },
             { 'data': 'Email' },
             { 'data': 'Mobile' },
-            { 'data': 'Created_By' },
+            { 'data': 'WhatsappMobile' },
             { 'data': 'Created_At' },
-            { 'data': 'VendorCode',
+            { 'data': 'ID',
               'render': function(data, type, row, meta){
                 return `<button class="btn btn-danger btn-sm">Delete</button>`;
               }
             },
         ]
+    });
+}
+
+function getAreaList(){
+    ShowLoader()
+    $.ajax({
+        type: "GET",
+        // data: data,
+        url: ApiURL + '/Address/getAreaList',
+        headers: {
+            'Authorization': 'Bearer ' + getCookie('Token')
+        },
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(responseData){
+            $('#AreaIDSelectBox').html(`<option value="">Select Colony</option>`);
+            $.each(responseData.AreaList, function(i,Area){
+                $('#AreaIDSelectBox').append(`<option value="${Area.ID}">${Area.AreaText}</option>`)
+            })
+            HideLoader()
+        },
+        error : function(err){
+            HideLoader()
+
+        }
     });
 }
