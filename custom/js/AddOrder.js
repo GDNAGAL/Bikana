@@ -1,5 +1,5 @@
 let ApiURL = $("#ApiURL").val();
-
+$("body").addClass("toggle-sidebar")
 function HideLoader(){
     $(".backdrop").hide()
 }
