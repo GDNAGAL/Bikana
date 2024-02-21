@@ -171,7 +171,7 @@
   /* Conversation */
   
   .conversation {
-    height: calc(100% - 12px);
+    height: calc(100% - 55px);
     position: relative;
     background: url("https://i.ibb.co/3s1f9Jq/default-wallpaper.png") repeat;
     z-index: 0;

@@ -359,3 +359,14 @@ function resetCustomerInputs(){
     $("#AddressInput").val('')
     $("#ColonySelectBox").val('');
 }
+
+$("#backToChatList").on("click",function(){
+    $(".chatlistscreen").removeClass("d-none")
+    $(".conversation_screen").addClass("d-none")
+})
+
+$(".chatrow").on("click",function(){
+    $(".chatlistscreen").addClass("d-none")
+    $(".conversation_screen").removeClass("d-none")
+    // console.log("ok")
+})

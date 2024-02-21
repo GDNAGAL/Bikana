@@ -59,6 +59,13 @@
   </li>
 
   <li class="nav-item">
+    <a class="nav-link collapsed" href="WhatsApp">
+      <i class="bi bi-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
     <a class="nav-link collapsed" href="AddOrder">
       <i class="bi bi-cart-check"></i>
       <span>Orders</span>
