@@ -8,12 +8,12 @@ if($AppMode == "LOCAL"){
 }elseif($AppMode == "TEST"){
 
     $AppURL = "";
-    $ApiURL = "http://groceryapi.royalplay.live";
+    $ApiURL = "https://groceryapi.royalplay.live";
 
 }elseif($AppMode == "PRODUCTION"){
 
     $AppURL = "";
-    $ApiURL = "http://groceryapi.royalplay.live";
+    $ApiURL = "https://groceryapi.royalplay.live";
 
 }
 
