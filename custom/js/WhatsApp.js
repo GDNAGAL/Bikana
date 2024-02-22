@@ -170,7 +170,6 @@ function ShowConversation(profile_Name, wa_id){
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="#">Mark As Order</a></li>
                             <li><a class="dropdown-item" href="#">Mark As Issue</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </div>
                 </div>
