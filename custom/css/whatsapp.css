@@ -171,17 +171,36 @@
   /* Conversation */
   
   .conversation {
-    height: calc(100% - 55px);
+    max-height: calc(100% - 55px);
     position: relative;
     background: url("https://i.ibb.co/3s1f9Jq/default-wallpaper.png") repeat;
     z-index: 0;
+    overflow-y: scroll;
   }
   
-  .conversation ::-webkit-scrollbar {
-    transition: all .5s;
-    width: 5px;
-    height: 1px;
-    z-index: 10;
+  /* Scrollbar styles */
+  .conversation::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .conversation::-webkit-scrollbar-thumb {
+    background-color: #afafaf; /* Change the color of the thumb */
+    border-radius: 4px; /* Optional: Add rounded corners to the thumb */
+  }
+
+  .conversation::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Change the color of the track */
+  }
+
+  /* Optional: Hover styles for the thumb */
+  .conversation::-webkit-scrollbar-thumb:hover {
+    background-color: #45a049;
+  }
+
+  /* Optional: Active styles for the thumb (when clicked) */
+  .conversation::-webkit-scrollbar-thumb:active {
+    background-color: #398439;
   }
   
   .conversation ::-webkit-scrollbar-track {
@@ -193,8 +212,7 @@
   }
   
   .conversation .conversation-container {
-    /* height: calc(100% - 68px); */
-    height:100%;
+    height: calc(100% - 68px);
     box-shadow: inset 0 10px 10px -10px #000000;
     overflow-x: hidden;
     padding: 0 16px;
@@ -458,6 +476,30 @@
 }
 
 
+#activeChatScreen{
+  height: 100% !important;
+  position: relative;
+}
+.nochat{
+  display: block;
+  width: 100%;
+  position: relative;
+  background-color: #e6e4e2;
+}
 
-
-  
+.nochat p{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.card{
+  height:85vh !important;
+}
+.card-body{
+  height: 100% !important;
+}
+#col9{
+  height: 100% !important;
+}
