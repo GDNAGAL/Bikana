@@ -82,17 +82,16 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-3">
-          <div class="card">
+          <div class="card" style="height:80vh">
             <div class="card-body p-0" style="height:80vh">
-              <div class="conversation_screen d-none" style="height:100%">
-                <div class="chat">
+              <div class="conversation_screen d-none" id="activeChatScreen" style="height:100%">
+                <!-- <div class="chat chatb">
                   <div class="chat-container">
                     <div class="user-bar">
                       <div class="back" id="backToChatList">
                         <i class="bi bi-arrow-left-short"></i>
                       </div>
                       <div class="avatar">
-                        <!-- <strong>G</strong> -->
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq2k2sI1nZyFTtoaKSXxeVzmAwIPchF4tjwg&usqp=CAU" alt="Avatar">
                       </div>
                       <div class="name">
@@ -100,7 +99,7 @@
                         <span class="status">online</span>
                       </div>
                     </div>
-                    <div class="conversation">
+                    <div class="conversation pe-0">
                       <div class="conversation-container">
                         <div class="message sent">
                           What happened last night swaibu?
@@ -125,7 +124,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="chatlistscreen">
                 <div class="chat">
@@ -136,8 +135,8 @@
                         <span class="status">Management System</span>
                       </div>
                     </div>
-                    <div>
-                      <div class="chatrow p-2 pb-1 d-flex border-bottom">
+                    <div id="AllChatList">
+                      <!-- <div class="chatrow p-2 pb-1 d-flex border-bottom">
                         <div class="_1WliW" style="height: 49px; width: 49px;">
                           <span data-icon="default-user" class="">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="45" height="45">
@@ -182,7 +181,7 @@
                             <span class="badge rounded-pill text-bg-success float-end">Done</span>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
