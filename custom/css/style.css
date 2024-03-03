@@ -64,3 +64,16 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.ProductVariantChooseautocomplete-list:hover{
+  background-color: #d4d4d4;
+}
+
+.suggestion-active {
+  background-color: DodgerBlue !important; 
+    color: #ffffff; 
+}
+#plistautocomplete-list{
+  pointer-events:none;
+  cursor: not-allowed;
+}

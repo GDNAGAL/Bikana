@@ -58,6 +58,10 @@
     .ctable ,th, td{
       border:none;
     }
+    .custd{
+      background-color:#dc3545 !important;
+      color:white !important;
+    }
   </style>
 </head>
 
@@ -250,18 +254,24 @@
                   <th class="bg-danger text-white" style="width:10%">UOM</th>
                   <th class="bg-danger text-white" style="width:10%">Rate</th>
                   <th class="bg-danger text-white" style="width:10%">Total</th>
-                  <th class="bg-danger text-white" style="width:10%">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
+                  <td><input class="invoice-input" type="number" id="searchProductID"></td>
+                  <td><input class="invoice-input text-start" type="text" id="pdescription"></td>
+                  <td><input class="invoice-input" type="number" id="qtyinput"></td>
+                  <td><input class="invoice-input" type="text" id="UOMinput" readonly></td>
+                  <td><input class="invoice-input" type="number" id="RateInput"></td>
+                  <td><input class="invoice-input" type="number" id="totalInput"></td>
+                </tr>
+                <!-- <tr>
                   <td><input class="invoice-input" type="text"></td>
                   <td><input class="invoice-input text-start" type="text"></td>
                   <td><input class="invoice-input" type="text"></td>
                   <td><input class="invoice-input" type="text"></td>
                   <td><input class="invoice-input" type="text"></td>
                   <td><input class="invoice-input" type="text"></td>
-                  <td></td>
                 </tr>
                 <tr>
                   <td><input class="invoice-input" type="text"></td>
@@ -270,17 +280,7 @@
                   <td><input class="invoice-input" type="text"></td>
                   <td><input class="invoice-input" type="text"></td>
                   <td><input class="invoice-input" type="text"></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td><input class="invoice-input" type="text"></td>
-                  <td><input class="invoice-input text-start" type="text"></td>
-                  <td><input class="invoice-input" type="text"></td>
-                  <td><input class="invoice-input" type="text"></td>
-                  <td><input class="invoice-input" type="text"></td>
-                  <td><input class="invoice-input" type="text"></td>
-                  <td></td>
-                </tr>
+                </tr> -->
               </tbody>
               </table>
             </div>
@@ -291,6 +291,37 @@
     </section>
 
   </main><!-- End #main -->
+
+
+
+  <!-- Modal -->
+  <div class="modal fade hide" id="ChooseProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="exampleModalLabel">Select Variant</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> -->
+        <div class="modal-body p-0">
+          <input type="hidden" class="form-control shadow-none" id="VariantID"  name="VariantID" required>
+          <div class="table-responsive">
+            <table class="table text-center table-hover" style="margin-bottom:0">
+              <thead>
+                <tr style="border:1px solid #dc3545;">
+                  <td class="custd">V_Code</td>
+                  <td class="custd">Product Description</td>
+                  <td class="custd">Price</td>
+                </tr>
+              </thead>
+              <tbody id="ProductVariantChoose" >
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

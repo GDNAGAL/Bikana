@@ -179,9 +179,9 @@ function ShowConversation(profile_Name, wa_id, getTypes){
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" chatwaid="${wa_id}" id="ReplyMarkAsOrder" href="#">Mark As Order</a></li>
-                            <li><a class="dropdown-item" chatwaid="${wa_id}" id="ReplyMarkAsIssue" href="#">Mark As Issue</a></li>
-                            <li><a class="dropdown-item" chatwaid="${wa_id}" id="ReplyChatBtn" href="#">Reply</a></li>
+                            <li><a class="dropdown-item" chatwaid="${waid}" id="ReplyMarkAsOrder" href="#">Mark As Order</a></li>
+                            <li><a class="dropdown-item" chatwaid="${waid}" id="ReplyMarkAsIssue" href="#">Mark As Issue</a></li>
+                            <li><a class="dropdown-item" chatwaid="${waid}" id="ReplyChatBtn" href="#">Reply</a></li>
                         </ul>
                     </div>
                 </div>
@@ -194,7 +194,7 @@ function ShowConversation(profile_Name, wa_id, getTypes){
     </div>
     <div class="col-md-4">C</div>
     `)
-    getmessagesFromDB(wa_id, getTypes)
+    getmessagesFromDB(waid, getTypes)
 }
 
 function getmessagesFromDB(waid, getTypes){
